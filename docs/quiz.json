@@ -1,64 +1,519 @@
 var questions = {
-	"quiz": [
-		{
+	"quiz": [{
 			"topic": "history",
-			"quizquestions": [
-				{
-					"question": "Which Roman Emperor did Vespasian succeed?",
-					"answers": [
-						"Vitellius",
-						"Julius",
-						"Nero"
-					],
-					"correct_answer": 1
-				},
-				{
-					"question": "What is the name of the distinctive red pottery found on roman sites?",
-					"answers": [
-						"Ruby glass",
-						"Samian ware",
-						"Denbeigh ware"
-					],
-					"correct_answer": 2
-				}
-			]
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "What event is commonly believed to have sparked World War I?",
+				"answers": [
+					"The assassination of Archduke Franz Ferdinand of Austria",
+					"The release of the single \"Take me out\" by Franz Ferdinand",
+					"Rio Ferdinand transferring from Leeds United to Manchester United in 2002"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "What year was the U.S Decleration of Indepence signed?",
+				"answers": [
+					"1887",
+					"1776",
+					"1901"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "Where did Albert Einstein live before moving to the United States?",
+				"answers": [
+					"England",
+					"Poland",
+					"Germany"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "How old was Queen Elizabeth II when she was crowned the Queen of England?",
+				"answers": [
+					"22",
+					"27",
+					"32"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "Who is the king of the Olympian gods in Greek mythology?",
+				"answers": [
+					"Zeus",
+					"Hades",
+					"Stavros Flatley"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "Which Roman Emperor did Vespasian succeed?",
+				"answers": [
+					"Vitellius",
+					"Julius",
+					"Nero"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "What was the name of the ancient trade route that connected the East with the West?",
+				"answers": [
+					"The Milk Road",
+					"The Silk Road",
+					"The Sulk Road"
+				],
+				"correct_answer": 2
+			}, {
+				"difficulty": "Expert",
+				"question": "Who was the last Tsar of Russia?",
+				"answers": [
+					"Lenin",
+					"Karl Marx",
+					"Nicholas II"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "What year did the Chernobyl disaster occur?",
+				"answers": [
+					"1982",
+					"1984",
+					"1986"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "What is the name of the distinctive red pottery found on roman sites?",
+				"answers": [
+					"Ruby glass",
+					"Samian ware",
+					"Denbeigh ware"
+				],
+				"correct_answer": 2
+			}]
 		},
 		{
 			"topic": "geography",
-			"quizquestions": [
-				{
-					"question": "which is the UK's second biggest city?",
-					"answers": [
-						"Glasgow",
-						"Cardiff",
-						"Birmingham"
-					],
-					"correct_answer": 3
-				},
-				{
-					"question": "which is the UK's smallest shire?",
-					"answers": [
-						"Renfrewshire",
-						"Diddyshire",
-						"Theshire"
-					],
-					"correct_answer": 2
-				}
-			]
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "which is the UK's second biggest city?",
+				"answers": [
+					"Glasgow",
+					"Cardiff",
+					"Birmingham"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "How many time zones does Australia have?",
+				"answers": [
+					"2",
+					"3",
+					"4"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "Which continent is in all four hemispheres?",
+				"answers": [
+					"Africa",
+					"Asia",
+					"South America"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "What country is home to Mount Everest?",
+				"answers": [
+					"China",
+					"Mongolia",
+					"Nepal"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "What is the highest man-made structure ever built?",
+				"answers": [
+					"Empire State Building in New York",
+					"Burj Khalifa in Dubai",
+					"Wiz Khalifa in Miami"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "Which is the UK's smallest shire?",
+				"answers": [
+					"Renfrewshire",
+					"Diddyshire",
+					"Theshire"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "Which country has the most pyramids in the world?",
+				"answers": [
+					"Egypt",
+					"Sudan",
+					"Oman"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "What is the largest capital city in North America?",
+				"answers": [
+					"Mexico City",
+					"Washington DC",
+					"Ottawa"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "Where is the largest volcano on Earth located?",
+				"answers": [
+					"USA",
+					"Fiji",
+					"Hawaii"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "In which U.S. state is Niagara Falls located?",
+				"answers": [
+					"Illinois",
+					"New York",
+					"Milwaukee"
+				],
+				"correct_answer": 1
+			}]
 		},
 		{
-			"topic": "flowers",
-			"quizquestions": [
-				{
-					"question": "which flower is associated with remembrance?",
-					"answers": [
-						"Rose",
-						"Geranium",
-						"Poppy"
-					],
-					"correct_answer": 3
-				}
-			]
+			"topic": "politics",
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "Which US President give his name to the Teddy Bear?",
+				"answers": [
+					"George Washington",
+					"Theodore Roosevelt",
+					"Barack Obama"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "What did Theresa May claim was the naughtiest thing she had done as a child in a 2017 interview?",
+				"answers": [
+					"Ran through fields of wheat",
+					"Accidentally reversed over a cat in her Vauxhall Corsa",
+					"Got a tattoo of Margret Thatcher/'s face on her backside"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "What item of produce outlasted Liz Truss as Prime Minister?",
+				"answers": [
+					"Watermelon",
+					"Lettuce",
+					"Cabbage"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "The Prime Minister lives at number 10 Downing Street - but who lives at number 11?",
+				"answers": [
+					"Larry the Cat",
+					"The government/'s chief whip",
+					"The ghost of Winston Churchill"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "Which UK constituency has the largest population?",
+				"answers": [
+					"Isle of Wight",
+					"West Ham",
+					"East Yorkshire"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "What is Boris Johnson/'s full name?",
+				"answers": [
+					"Borisus Johnsonus",
+					"George Boris Van de Sar Johnson",
+					"Alexander Boris de Pfeffel Johnson"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "A member of which band threw a bucket of water over John Prescott at the 1998 Brit Awards?",
+				"answers": [
+					"Chumbawamba",
+					"Bananarama",
+					"Oasis"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "How long is a French President elected for?",
+				"answers": [
+					"Three years",
+					"Four years",
+					"Five years"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "Which Conservative politician famously fed British beef to his daughter, in a press event to prove its safety from B.S.E?",
+				"answers": [
+					"David Blunkett",
+					"John Gummer",
+					"David Miliband"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "What does the /'S/' in /'Harry S Truman/' stand for?",
+				"answers": [
+					"Spencer",
+					"Stanley",
+					"Nothing"
+				],
+				"correct_answer": 3
+			}]
+		},{
+			"topic": "conservation",
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "What is the fastest member of the animal kingdom?",
+				"answers": [
+					"Cheetah",
+					"Killer Whale",
+					"Peregrine Falcon"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "How many pairs of wings does a bee have?",
+				"answers": [
+					"2",
+					"3",
+					"4"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "The love apple is the original name for what?",
+				"answers": [
+					"Rose",
+					"Cherry",
+					"Tomato"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "Alligators are native to USA and which other country?",
+				"answers": [
+					"Australia",
+					"Ivory Coast",
+					"China"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "A snail can sleep for how many years?",
+				"answers": [
+					"3",
+					"5",
+					"2"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "On which continent did broccoli originate?",
+				"answers": [
+					"South America",
+					"Europe",
+					"Asia"
+				],
+				"correct_answer": 2
+			}]
+		},
+		{
+			"topic": "celebrity",
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "Which one of the following is NOT the name of one of Kim Kardashian/'s kids?",
+				"answers": [
+					"South",
+					"North",
+					"Chicago"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "What singer stars in and sings in the 2003 remake of \"Freaky Friday\"?",
+				"answers": [
+					"Justin Timberlake",
+					"Hilary Duff",
+					"Lindsay Lohan"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "Who did Britney Spears marry in 2004?",
+				"answers": [
+					"Kevin Federline",
+					"Justin Timberlake",
+					"Brad Pitt"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "Which celebrity has the most expensive house in Beverly hills?",
+				"answers": [
+					"Jeff Bezos",
+					"Tom Hanks",
+					"Kim Kardashian"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "What is the stage name of singer Reg Dwight",
+				"answers": [
+					"Elvis Presley",
+					"Elton John",
+					"Gary Barlow"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "What is the name of Gary and Phil Neville/'s father?",
+				"answers": [
+					"Greville Neville",
+					"Rebel Neville",
+					"Neville Neville"
+				],
+				"correct_answer": 3
+			
+			}]
+		},
+		{
+			"topic": "law",
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "What is the age of criminal responsibility in England and Wales?",
+				"answers": [
+					"10",
+					"14",
+					"16"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "You can make decisions on someone/'s behalf if they appoint you using a LPA, what does LPA stand for?",
+				"answers": [
+					"Law person of authority",
+					"Left pulmonary artery",
+					"Lasting power of attorney"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "How many years after an author/'s death does copyright last for in the UK??",
+				"answers": [
+					"20",
+					"40",
+					"70"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "In which decade of the 19th-century was the last British convict transported to Australia?",
+				"answers": [
+					"1810/'s",
+					"1850/'s",
+					"1890/'s"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "As of 1313, it has been illegal to enter the Houses of Parliament wearing what?",
+				"answers": [
+					"A feather boa",
+					"A ruffled collar",
+					"A suit of armour"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "In which decade in Ireland were women first legally allowed to own their homes outright?",
+				"answers": [
+					"1950/'s",
+					"1970/'s",
+					"1990/'s"
+				],
+				"correct_answer": 2
+			
+			}]
+		},
+		{
+			"topic": "sport",
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "Which country won the first ever football world cup?",
+				"answers": [
+					"Brazil",
+					"Germany",
+					"Uruguay"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "Which Formula 1 driver has won the most races in the history of the sport?",
+				"answers": [
+					"Michael Schumacher",
+					"Ayrton Senna",
+					"Lewis Hamilton"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "Which sport uses a net, a racket, and a shuttlecock?",
+				"answers": [
+					"Tennis",
+					"Badminton",
+					"Squash"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "Jurgen Klopp began his manegeral career at which German club?",
+				"answers": [
+					"Mainz 05",
+					"Borussia Dortmund",
+					"Bayern Munich"
+				],
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "What colour medal did diver Tom Daley win at London 2012?",
+				"answers": [
+					"Gold",
+					"Silver",
+					"Bronze"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "In rugby union, who is England Men/'s all-time top try scorer?",
+				"answers": [
+					"Rory Underwood",
+					"Jonny Wilkinson",
+					"Jason Robinson"
+				],
+				"correct_answer": 1
+			
+			}]
 		}
 	]
 }
