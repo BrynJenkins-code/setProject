@@ -9,6 +9,7 @@ var questions = {
 					"The release of the single \"Take me out\" by Franz Ferdinand",
 					"Rio Ferdinand transferring from Leeds United to Manchester United in 2002"
 				],
+				"video":"https://www.youtube.com/embed/1fe_1MpmReE",
 				"correct_answer": 1
 			},{
 				"difficulty": "Beginner",

@@ -81,6 +81,9 @@ function createQuestionElement(index) {
     id: "question",
   });
 
+  var video = createVideo(index);
+  qElement.append(video);
+
   var header = $("<h2>Question " + (index + 1) + ":</h2>");
   qElement.append(header);
 
@@ -106,6 +109,16 @@ function createRadios(index) {
     radioList.append(item);
   }
   return radioList;
+}
+
+function createVideo(index) {
+  if (questions[index].video) {
+    return $(
+      '<iframe width="1212" height="682" src="' +
+        questions[index].video +
+        '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
+    );
+  }
 }
 
 // Reads the user selection and pushes the value to an array
