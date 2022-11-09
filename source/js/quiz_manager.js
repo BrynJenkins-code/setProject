@@ -1,7 +1,6 @@
 function loadQuestions(jsonData, topic) {
   for (i in jsonData.quiz) {
     if (jsonData.quiz[i].topic == topic) {
-      console.log(jsonData.quiz[i].quizquestions);
       return jsonData.quiz[i].quizquestions;
     }
   }
@@ -143,7 +142,7 @@ function displayScore() {
 
   var numCorrect = 0;
   for (var i = 0; i < selections.length; i++) {
-    if (selections[i] === questions[i].correctAnswer) {
+    if (selections[i] + 1 === questions[i].correct_answer) {
       numCorrect++;
     }
   }
