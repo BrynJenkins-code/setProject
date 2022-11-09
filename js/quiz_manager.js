@@ -84,6 +84,9 @@ function createQuestionElement(index) {
   var video = createVideo(index);
   qElement.append(video);
 
+  var image = createImage(index);
+  qElement.append(image);
+
   var header = $("<h2>Question " + (index + 1) + ":</h2>");
   qElement.append(header);
 
@@ -117,6 +120,17 @@ function createVideo(index) {
       '<iframe width="1212" height="682" src="' +
         questions[index].video +
         '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
+    );
+  }
+}
+function createImage(index) {
+  if (questions[index].image && questions[index].altText) {
+    return $(
+      '<img src="../media/questions/' +
+        questions[index].image +
+        '" alt="' +
+        questions[index].altText +
+        '">'
     );
   }
 }

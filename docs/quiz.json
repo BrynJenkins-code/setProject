@@ -349,6 +349,8 @@ var questions = {
 					"North",
 					"Chicago"
 				],
+				"image":"celebrity.jpg",
+				"altText":"The Rock",
 				"correct_answer": 1
 			},{
 				"difficulty": "Beginner",
