@@ -2,3 +2,12 @@
     height: 100px;
     width: 100px;
 }
+#topiclinks{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+.topicContainers{
+    display: flex;
+    flex-direction: column;
+}

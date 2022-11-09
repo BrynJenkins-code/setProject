@@ -19,11 +19,14 @@ for (let index = 0; index < links.length; index++) {
 
 function createLinks(topics) {
   for (i = 0; i < topics.length; i++) {
+    let topicContainer = document.createElement("div");
+    topicContainer.classList.add("topicContainers");
+
     let topicImage = document.createElement("img");
     topicImage.src = `../media/topics/${topics[i]}.jpg`;
     topicImage.classList.add("topicimages");
     topicImage.alt = `${topics[i]}`;
-    topiclinks.appendChild(topicImage);
+    topicContainer.appendChild(topicImage);
     var a = document.createElement("a");
     var linkText = document.createTextNode(topics[i]);
     a.appendChild(linkText);
@@ -31,6 +34,8 @@ function createLinks(topics) {
     a.href = "quiz.html";
     a.classList.add("link");
     a.innerText = topics[i];
-    topiclinks.appendChild(a);
+    topicContainer.appendChild(a);
+
+    topiclinks.appendChild(topicContainer);
   }
 }
