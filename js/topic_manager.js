@@ -19,6 +19,11 @@ for (let index = 0; index < links.length; index++) {
 
 function createLinks(topics) {
   for (i = 0; i < topics.length; i++) {
+    let topicImage = document.createElement("img");
+    topicImage.src = `../media/topics/${topics[i]}.jpg`;
+    topicImage.classList.add("topicimages");
+    topicImage.alt = `${topics[i]}`;
+    topiclinks.appendChild(topicImage);
     var a = document.createElement("a");
     var linkText = document.createTextNode(topics[i]);
     a.appendChild(linkText);
