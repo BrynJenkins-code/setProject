@@ -6,18 +6,26 @@ function loadTopics(jsonData) {
   }
   return topics;
 }
-
+let selected_topic;
 topics = loadTopics(questions);
 createLinks(topics);
+let links = document.querySelectorAll(".link");
+for (let index = 0; index < links.length; index++) {
+  links[index].addEventListener("click", () => {
+    localStorage.clear();
+    localStorage.setItem("topic", links[index].innerHTML);
+  });
+}
 
 function createLinks(topics) {
-  console.log(topics.length);
   for (i = 0; i < topics.length; i++) {
     var a = document.createElement("a");
     var linkText = document.createTextNode(topics[i]);
     a.appendChild(linkText);
     a.title = topics[i];
     a.href = "quiz.html";
+    a.classList.add("link");
+    a.innerText = topics[i];
     topiclinks.appendChild(a);
   }
 }

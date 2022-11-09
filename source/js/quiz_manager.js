@@ -5,10 +5,12 @@ function loadQuestions(jsonData, topic) {
     }
   }
 }
+let selected_topic = localStorage.getItem("topic");
 var questionCounter = 0; //Tracks question number
+var currentScore = 0;
 var selections = []; //Array containing user choices
 var quiz = $("#quiz"); //Quiz div object
-questions = loadQuestions(questions, "history");
+questions = loadQuestions(questions, selected_topic);
 
 // Display initial question
 displayNext();
@@ -27,6 +29,7 @@ $("#next").on("click", function (e) {
   if (isNaN(selections[questionCounter])) {
     alert("Please make a selection!");
   } else {
+    checkAnswer(selections[questionCounter], questionCounter);
     questionCounter++;
     displayNext();
   }
@@ -41,6 +44,10 @@ $("#prev").on("click", function (e) {
   }
   choose();
   questionCounter--;
+  if (currentScore > 0) {
+    currentScore--;
+  }
+  updateScore();
   displayNext();
 });
 
@@ -53,6 +60,8 @@ $("#start").on("click", function (e) {
   }
   questionCounter = 0;
   selections = [];
+  currentScore = 0;
+  updateScore();
   displayNext();
   $("#start").hide();
 });
@@ -108,16 +117,9 @@ function choose() {
 function displayNext() {
   quiz.fadeOut(function () {
     $("#question").remove();
-
     if (questionCounter < questions.length) {
       var nextQuestion = createQuestionElement(questionCounter);
       quiz.append(nextQuestion).fadeIn();
-      if (!isNaN(selections[questionCounter])) {
-        $("input[value=" + selections[questionCounter] + "]").prop(
-          "checked",
-          true
-        );
-      }
 
       // Controls display of 'prev' button
       if (questionCounter === 1) {
@@ -134,6 +136,18 @@ function displayNext() {
       $("#start").show();
     }
   });
+}
+
+function checkAnswer(index, questionIndex) {
+  if (index + 1 === questions[questionIndex].correct_answer) {
+    currentScore++;
+    updateScore();
+  }
+}
+
+function updateScore() {
+  let number = document.querySelector("#scoreNum");
+  number.innerText = currentScore;
 }
 
 // Computes score and returns a paragraph element to be displayed
