@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" class="b-pw-1280 b-reith-sans-font b-reith-serif-font no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/gel/static/images/favicon.ico" type="image/x-icon">
+
+    <title>GEL | Share tools Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="/gel/static/css/gel.css">
+
+    <script type="text/javascript"> // feature detects
+        document.documentElement.className = document.documentElement.className.replace(' no-js', ' js');
+        document.documentElement.className += (' ' + ('ontouchstart' in document.documentElement ? 'touch' : 'no-touch'));
+        document.documentElement.className += (' ' + ('flexWrap' in document.documentElement.style ? 'flex' : 'no-flex'));
+        document.documentElement.className += (' ' + ((document.createElementNS && 'createSVGRect' in document.createElementNS('http://www.w3.org/2000/svg', 'svg')) ? 'svg' : 'no-svg'));
+    </script>
+
+    
+</head>
+
+<body class="gel-guideline-body">
+    <main id="main" class="gel-wrap gs-u-clearfix">
+        <div class="gel-layout">
+            <div class="gel-layout__item gel-5/5@l" style="padding-right: 12px;">
+                <h1 class="gel-guideline-header__title">Share tools</h1>
+            </div>
+        </div>
+
+        <div class="gel-layout">
+            <div class="gel-guideline-sections gel-body-copy gel-layout__item gel-5/5@l">
+                <h2>Reference implementation</h2>
+
+                <aside class="gel-sharetools" aria-labelledby="gel-sharetools__label">
+  <h3 role="presentation" id="gel-sharetools__label" aria-hidden="true">Share this</h3>
+  <a href="#gel-sharetools__end" class="gel-sr gel-sr__focusable">Skip sharing</a>
+  <ul class="gel-sharetools__options">
+    <li>
+      <a class="gel-button" href="#" target="_blank">
+        <span class="gel-sr">Email, share this, external</span>
+        <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+          <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-email"></use>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a class="gel-button" href="#" target="_blank">
+        <span class="gel-sr">Facebook, share this, external</span>
+        <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+          <use xlink:href="/gel/static/images/gel-icons-social.svg#gel-icon-facebook"></use>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a class="gel-button" href="#" target="_blank">
+        <span class="gel-sr">Twitter, share this, external</span>
+        <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+          <use xlink:href="/gel/static/images/gel-icons-social.svg#gel-icon-twitter"></use>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a class="gel-button" href="#" target="_blank">
+        <span class="gel-sr">LinkedIn, share this, external</span>
+        <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+          <use xlink:href="/gel/static/images/gel-icons-social.svg#gel-icon-linkedin"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="gel-infopanel">
+      <button class="gel-infopanel__button gel-button" type="button" aria-haspopup="true" aria-expanded="false">
+        <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+          <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-share"></use>
+        </svg>
+        <span>Share</span>
+      </button>
+      <div class="gel-infopanel__panel" role="group" aria-labelledby="unique-ref1" style="width: 15rem;" hidden>
+        <div class="gel-infopanel__title-area">
+          <span id="unique-ref1" aria-hidden="true">Share</span>
+          <button class="gel-infopanel__close-button">
+            <span class="gel-sr">close</span>
+            <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+              <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-no"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="gel-sharetools__complete">
+          <ul class="gel-sharetools__options">
+            <li>
+              <a class="gel-button" href="#">
+                <span class="gel-sr">Email, share this, external</span>
+                <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+                  <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-email"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="gel-button" href="#">
+                <span class="gel-sr">Facebook, share this, external</span>
+                <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+                  <use xlink:href="/gel/static/images/gel-icons-social.svg#gel-icon-facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="gel-button" href="#">
+                <span class="gel-sr">Twitter, share this, external</span>
+                <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+                  <use xlink:href="/gel/static/images/gel-icons-social.svg#gel-icon-twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="gel-button" href="#">
+                <span class="gel-sr">LinkedIn, share this, external</span>
+                <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+                  <use xlink:href="/gel/static/images/gel-icons-social.svg#gel-icon-linkedin"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+          <div class="gel-sharetools__link">
+            <label for="gel-sharetools__link-input">Copy this link</label>
+            <input class="gel-sharetools__link-input" type="text" id="gel-sharetools__link-input" value="http://bbc.in/3x4mp1e"
+              readonly />
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="gel-sr gel-sr__focusable" id="gel-sharetools__end" tabindex="-1">End of sharing tools</div>
+</aside>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.gel && gel.InfoPanel.init();
+
+    // Initialize info panel
+    var infoPanelElem = document.querySelector('.gel-infopanel');
+    var infopanel = new gel.InfoPanel.constructor(infoPanelElem, { hAlign: 'right' });
+
+    // Little script to select the contents of the 
+    // 'Copy this link' input on focus
+    var copyLink = document.querySelector('.gel-sharetools__link-input');
+    copyLink.addEventListener('focus', function () {
+      copyLink.select();
+      document.execCommand('copy');
+    });
+  });
+</script>
+            </div>
+        </div>
+    </main>
+
+    <script nomodule defer type="text/javascript" src="/gel/static/js/external-svg-polyfill.js"></script>
+    <script type="text/javascript" src="/gel/static/js/gel.js"></script>
+
+    
+</body>
+
+</html>

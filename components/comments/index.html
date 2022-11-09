@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en" class="b-pw-1280 b-reith-sans-font b-reith-serif-font no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/gel/static/images/favicon.ico" type="image/x-icon">
+
+    <title>GEL | Comments</title>
+    <meta property="og:title" content="GEL Technical Guide: Comments">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bbc.github.io/gel/">
+    <meta property="og:image" content="https://bbc.github.io/gel/static/images/bbc-gel-logo.png">
+    <meta property="og:description" content="Guidance for developers who wish to implement BBC GEL component patterns in ways that follow all BBC accessibility standards.">
+    <meta property="og:locale" content="en_GB">
+    <meta name="version_number" content="1.0">
+
+    <script src="/gel/static/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="/gel/static/css/gel.css">
+    <link rel="stylesheet" type="text/css" href="/gel/static/css/site.css">
+
+    <script type="text/javascript"> // feature detects
+        document.documentElement.className = document.documentElement.className.replace(' no-js', ' js');
+        document.documentElement.className += (' ' + ('ontouchstart' in document.documentElement ? 'touch' : 'no-touch'));
+        document.documentElement.className += (' ' + ('flexWrap' in document.documentElement.style ? 'flex' : 'no-flex'));
+        document.documentElement.className += (' ' + ((document.createElementNS && 'createSVGRect' in document.createElementNS('http://www.w3.org/2000/svg', 'svg')) ? 'svg' : 'no-svg'));
+    </script>
+
+    <script type="text/javascript">
+        try {
+            (new FontFaceObserver('ReithSans', 5000)).load().then(function () {
+                document.documentElement.className += ' b-reith-sans-loaded';
+            });
+            (new FontFaceObserver('ReithSerif', 5000)).load().then(function () {
+                document.documentElement.className += ' b-reith-loaded';
+            });
+        } catch (e) {
+            console.log('Reith fonts did not load within 5 seconds.');
+        }
+    </script>
+
+    
+</head>
+
+<body class="geltags-body">
+    <p class="gel-sr gel-sr__focusable gel-sr__overlay" tabindex="0">
+        <a href="#main" onfocus="this.parentNode.classList.add('gel-sr__focused')"
+            onblur="this.parentNode.classList.remove('gel-sr__focused')">Skip
+            to content</a>
+    </p>
+
+    <header>
+        <div class="geltags-header gs-u-clearfix">
+            <div class="gel-wrap">
+                <a href="http://www.bbc.co.uk/"><svg aria-label="BBC GEL Logo" width="100" height="24"
+                        viewBox="0 0 100 24">
+                        <title>BBC</title>
+                        <image xlink:href="/gel/static/images/bbc-blocks_grey.svg"
+                            src="/gel/static/images/bbc-blocks_grey.png" width="100%" height="100%"></image>
+                    </svg></a>
+            </div>
+        </div>
+        <div class="geltags-header__banner gs-u-clearfix">
+            <div class="gel-wrap">
+                <div class="gel-layout">
+                    <div class="gel-layout__item gel-2/5@l"
+                        style="text-align:left; padding-left:13px; margin-bottom:32px; margin-top: -12px;">
+                        <a href="/gel/" class="geltags-logo"><img src="/gel/static/images/bbc-gel-logo.png" alt="BBC GEL, global experience language" style="max-width:169px;"></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1" class="gel-wrap gs-u-clearfix">
+        <div class="gel-layout">
+            <div class="gel-layout__item gel-1/5@l">
+                <!-- column placeholder-->
+            </div>
+
+            <div class="gel-layout__item gel-2/5@l" style="padding-right: 12px;">
+                <h1 class="geltags-header__title">Comments</h1>
+                <p class="geltags-header__summary gel-great-primer">The ability to engage with content must be inclusive. Everyone should be able to have their say</p>
+            </div>
+
+            <div class="gel-layout__item gel-1/5@l">
+                <dl class="geltags-standout-box">
+                    
+                    <dt>Version:</dt>
+                    <dd>0.1.0</dd>
+                    
+                    <dt>Status:</dt>
+                    <dd>Published</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="gel-layout">
+            <div class="gel-layout__item gel-1/5@l">
+                <nav role="navigation" id="side-nav" class="gel-side-nav sticky" data-sticky-for="900"
+                    style="padding-top:32px">
+                    <div class="gel-pica gs-u-mb gs-u-mt0">Contents</div>
+                    <ol id="geltags-toc__links" class="geltags-toc"><li><a href="#introduction">Introduction</a></li><li><a href="#recommended-markup">Recommended markup</a></li><li><a href="#meta-information-and-sort-control">Meta information and sort control</a></li><li><a href="#the-comments-stream">The comments stream</a></li><li><a href="#a-single-comment">A single comment</a></li><li><a href="#recommended-layout">Recommended layout</a></li><li><a href="#recommended-behaviour">Recommended behaviour</a></li><li><a href="#reference-implementation">Reference implementation</a></li><li><a href="#related-research">Related research</a></li></ol>
+                </nav>
+            </div>
+
+            <div class="geltags-sections geltags-body-copy gel-layout__item gel-3/5@l">
+                <h2 id="introduction">Introduction</h2>
+<p>The principle <a href="https://www.bbc.co.uk/gel/guidelines/comments">GEL Comments guide</a> goes into some detail about how BBC comments should be presented and behave. The purpose of <em>this</em> guide is to describe the expected technical implementation of a comments section's key features.</p>
+<p>Rather than providing a full <a href="#reference-implementation">reference implementation</a> of a working comments section (which is best achieved using a suitable framework such as React or Vue), we will focus on the individual behaviour of the key subcomponents that contribute together to the pattern.</p>
+<h2 id="recommended-markup">Recommended markup</h2>
+<h3 id="the-comments-section">The comments section</h3>
+<p>The larger comments section comprises:</p>
+<ol>
+<li>The comment form (or sign in functionality where the user is not authenticated)</li>
+<li>Meta information and sorting control</li>
+<li>The comments stream</li>
+</ol>
+<p>Since comments, and the ability to leave a comment, are tangential to the article itself these are grouped into an <code>&lt;aside&gt;</code> element placed at the end of the article body. The <code>&lt;aside&gt;</code> element represents a complementary landmark<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> to assistive technology users. An <code>aria-labelledby</code> attribute is used to label the <code>&lt;aside&gt;</code> by association to the heading's <code>id</code>. The heading should comprise both the term <em>&quot;Comments&quot;</em> and the question or call-to-action intended to spark participation.</p>
+<pre><code class="prettyprint syntax-html">&lt;aside class=&quot;gel-comments&quot; aria-labelledby=&quot;comments-label&quot;&gt;
+  &lt;h2 class=&quot;gel-comments__label&quot; id=&quot;comments-label&quot; &gt;
+    &lt;small&gt;Comments:&lt;/small&gt;
+    &lt;span&gt;Does the England team have any chance of qualifying for the World Cup?&lt;/span&gt;
+  &lt;/h2&gt;
+  &lt;p&gt;Join in to comment, reply, and rate.&lt;/p&gt;
+  &lt;!-- comments form and comments stream here --&gt;
+&lt;/aside&gt;
+</code></pre>
+<p>The label is announced along with the complementary role when the user traverses into the <code>&lt;aside&gt;</code> element. It is also included as the label in screen readers' aggregated landmark menus. The <code>&lt;h2&gt;</code> heading level marks the comments section as a subsection of the parent article, with its <code>&lt;h1&gt;</code> heading.</p>
+<ul>
+<li>All About The World Cup Qualifiers (<code>&lt;h1&gt;</code>)
+<ul>
+<li>Comments: Does the England team have any chance of qualifying for the World Cup? (<code>&lt;h2&gt;</code>)</li>
+</ul>
+</li>
+</ul>
+<p>Screen reader users can navigate directly between headings (and the sections / landmarks they denote), typically using the <kbd>h</kbd> shortcut key.</p>
+<p>Inside the comments section, the comments form comes first, followed by the meta information and sorting, then the comments stream. A link at the bottom of the section labelled <em>&quot;Leave your comment&quot;</em> points to the comment form's <code>&lt;textarea&gt;</code> by <code>id</code> (<code>#your-comment</code>), so readers can easily leave a comment after reaching the end of the stream.</p>
+<pre><code class="prettyprint syntax-html">&lt;aside class=&quot;gel-comments&quot; aria-labelledby=&quot;comments-label&quot;&gt;
+  &lt;h2 class=&quot;gel-comments__label&quot; id=&quot;comments-label&quot; &gt;
+    &lt;small&gt;Comments:&lt;/small&gt;
+    &lt;span&gt;Does the England team have any chance of qualifying for the World Cup?&lt;/span&gt;
+  &lt;/h2&gt;
+  &lt;p&gt;Join in to comment, reply, and rate.&lt;/p&gt;
+  &lt;!-- comments form and comments stream here --&gt;
+  &lt;div class=&quot;gel-comments__footer&quot;&gt;
+    &lt;a href=&quot;#your-comment&quot;&gt;Leave your comment&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;
+</code></pre>
+<h3 id="the-comment-form">The comment form</h3>
+<p>Authentication is out of scope for this article, so you are asked to imagine the user is already signed in—and the sign in call-to-action replaced by the comment form—in the following example.</p>
+<pre><code class="prettyprint syntax-html">&lt;form class=&quot;gel-comments__form&quot;&gt;
+  &lt;p&gt;You're signed in as &lt;a href=&quot;path/to/user/comment/history&quot;&gt;Ben&lt;/a&gt;&lt;/p&gt;
+  &lt;div class=&quot;gel-form__divider&quot;&gt;
+    &lt;div class=&quot;gel-comments__success&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;gel-form__divider&quot;&gt;
+    &lt;label for=&quot;your-comment&quot;&gt;Add your comment&lt;/label&gt;
+    &lt;div class=&quot;gel-comments__field&quot;&gt;
+      &lt;textarea name=&quot;your-comment&quot; id=&quot;your-comment&quot; maxlength=&quot;200&quot; aria-describedby=&quot;chars-left&quot;&gt;&lt;/textarea&gt;
+      &lt;span class=&quot;gel-comments__chars&quot; id=&quot;chars-left&quot;&gt;
+        &lt;span class=&quot;gel-comments__chars-left&quot;&gt;200&lt;/span&gt;
+        &lt;span class=&quot;gel-comments__chars-of&quot; aria-hidden=&quot;true&quot;&gt;/ 200&lt;/span&gt;
+        &lt;span class=&quot;gel-sr&quot;&gt;characters remaining&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;gel-form__field-error&quot; id=&quot;your-comment-error&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;gel-form__divider&quot;&gt;
+    &lt;button type=&quot;submit&quot; aria-describedby=&quot;your-comment-rules&quot; hidden&gt;Post&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;p id=&quot;your-comment-rules&quot;&gt;&lt;small&gt;Comments must follow the &lt;a href=&quot;path/to/rules&quot;&gt;house rules&lt;/a&gt;&lt;/small&gt;.&lt;/p&gt;
+&lt;/form&gt;
+</code></pre>
+<ul>
+<li><strong><code>for=&quot;your-comment&quot;</code>:</strong> The textarea must be labelled programmatically, by matching its <code>id</code> with a <code>&lt;label&gt;</code>'s <code>for</code> value. As recommended in <a href="../form-fields">Form fields</a> the label should appear persistently above the input/textarea, and not be supplanted by a <code>placeholder</code> attribute, which presents various accessibility and usability issues</li>
+<li><strong><code>class=&quot;gel-comments__field&quot;</code>:</strong> This groups the <code>&lt;textarea&gt;</code> with the character count element for CSS positioning. The count is associated with the <code>&lt;textarea&gt;</code> using <code>aria-describedby</code>.</li>
+<li><strong><code>class=&quot;gel-comment__chars&quot;</code>:</strong> A combination of <code>aria-hidden=&quot;true&quot;</code> and <code>class=&quot;gel-sr&quot;</code> ensures the accessible wording for this element follows the pattern <em>&quot;[number] characters remaining&quot;</em>. The complete <code>aria-describedby</code> value is a space separated combination of the <code>your-comment-error</code> and <code>chars-left</code> <code>id</code>s. The text of each <code>id</code>'s element is read in turn whenever the textarea is focused.</li>
+<li><strong><code>class=&quot;gel-form__field-error&quot;</code>:</strong> The form should use the standard and accessible error messaging mechanism described in <a href="../form-fields">Form fields</a>. This error element is associated with the <code>&lt;textarea&gt;</code> and populated via the <a href="../form-fields">Form fields</a> implementation's script (with added <code>aria-describedby</code>, and <code>aria-invalid</code> where applicable).</li>
+<li><strong><code>id=&quot;your-comment-rules&quot;</code>:</strong> All users should be made aware of the moderation rules before submitting their comment. To make this information available to screen reader users in a timely fashion, it is associated with the submit button using <code>aria-describedby</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>. That is: it will be read out as part of the button's semantic information while the user is focused on it.</li>
+<li><strong><code>hidden</code>:</strong> As set out in the principle <a href="https://www.bbc.co.uk/gel/guidelines/comments">GEL Comments guide</a>, the submit button is not revealed until the user has entered some text into the <code>&lt;textarea&gt;</code></li>
+<li><strong><code>class=&quot;gel-comments__success&quot;</code>:</strong> This live region<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> is populated with the message <em>&quot;Your comment was posted successfully&quot;</em>. Live regions are announced in screen reader software whenever content is appended to them, meaning screen reader users can be kept abreast of changes to state.</li>
+</ul>
+<h2 id="meta-information-and-sort-control">Meta information and sort control</h2>
+<p>Sandwiched between the form and the comment stream is a subcomponent that tells the user the comment count, and allows them to sort the comments based on a handful of different criteria.</p>
+<p>How many sorting criteria are present depends on the complexity of any comment for the specific implementation. At the very least, users should be able to reorder comments by submission time: <em>&quot;Latest first&quot;</em> versus <em>&quot;Oldest first&quot;</em>. Some comments (see <a href="#the-comment-stream">the ensuing comment stream section</a>) include reaction controls. If so, you might implement <em>&quot;Most popular&quot;</em> and <em>&quot;Least popular&quot;</em>.</p>
+<p>The <a href="https://www.bbc.co.uk/gel/guidelines/comments">GEL Comments guide</a> illustrates the sorting control as a kind of <em>dropdown</em> or <code>&lt;select&gt;</code>. It's recommended this is either implemented using the ARIA menu button pattern<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> or uses a native <code>&lt;select&gt;</code> element with some special styling. It's possible to achieve the aesthetic illustrated in the <a href="https://www.bbc.co.uk/gel/guidelines/comments">GEL Comments guide</a> with CSS—at least for the closed state<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>, if not for the <code>&lt;option&gt;</code>s. The advantage of using the native control is that semantic HTML is robust and interoperable with minimal code.</p>
+<p>In the following code sample, the comment count is used as a description for the list (<code>&lt;ul&gt;</code>) that encloses <a href="#the-comment-stream">the comment stream</a>.</p>
+<pre><code class="prettyprint syntax-html">&lt;div class=&quot;gel-comments__meta&quot;&gt;
+  &lt;span id=&quot;comments-count&quot;&gt;186 comments&lt;/span&gt;
+  &lt;label class=&quot;gel-comments__sort&quot; for=&quot;comments-sort&quot;&gt;
+    Show:
+    &lt;select id=&quot;comments-sort&quot;&gt;
+      &lt;option selected&gt;Latest first&lt;/option&gt;
+      &lt;option&gt;Oldest first&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;svg class=&quot;gel-icon gel-icon--text&quot; focusable=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use xlink:href=&quot;/path/to/gel-icons-all.svg#gel-icon-down&quot;&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+&lt;ul class=&quot;gel-comments__stream&quot; aria-describedby=&quot;comments-count&quot;&gt;
+  &lt;!-- stream of comment list items --&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>As standard, the SVG takes <code>focusable=&quot;false&quot;</code> and <code>aria-hidden=&quot;true&quot;</code> take it out of focus order and ensure it is not announced in screen reader output.</p>
+<h2 id="the-comments-stream">The comments stream</h2>
+<p>As already explained in the previous section, the comments themselves ought to be marked up as a list. Lists are identified and their items enumerated in screen reader output. Screen readers also provide list navigation shortcuts, such as the <kbd>i</kbd> key for navigating to the next list item in NVDA<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>.</p>
+<p>Where the facility to reply to comments is implemented, replies should be marked up as <em>nested</em> lists appended to the original comment's content. This describes the <strong>relationship of belonging</strong> non-visually and to assistive technology users.</p>
+<pre><code class="prettyprint syntax-html">&lt;ul class=&quot;gel-comments__stream&quot; aria-describedby=&quot;comments-count&quot;&gt;
+  &lt;li&gt;
+    &lt;!-- comment content --&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;!-- reply comment content --&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>Each comment, regardless of its nesting level in the list structure, should be introduced by an <code>&lt;h3&gt;</code> level heading:  comments are subcomponents of the comments stream.</p>
+<ul>
+<li>All About The World Cup Qualifiers (<code>&lt;h1&gt;</code>)
+<ul>
+<li>Comments: Does the England team have any chance of qualifying for the World Cup? (<code>&lt;h2&gt;</code>)
+<ul>
+<li>Ben (12:00) (<code>&lt;h3&gt;</code>)</li>
+<li>Clive (13:27) (<code>&lt;h3&gt;</code>)</li>
+<li>Judith (14:22) (<code>&lt;h3&gt;</code>)</li>
+<li>Alex (15:08) (<code>&lt;h3&gt;</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>While the nested list structure describes the nested relationship of replies to original comments, each comment should be considered <em>on the same plane</em> as a contribution to the comment stream / discourse. This way, screen reader users are made aware of the nesting structure, but know that a comment of any type (reply or otherwise) can be navigated to using the <code>&lt;h3&gt;</code> shortcut (<kbd>3</kbd> in NVDA or JAWS on Windows).</p>
+<h2 id="a-single-comment">A single comment</h2>
+<p>Every comment on a BBC site must include:</p>
+<ul>
+<li>An <code>&lt;h3&gt;</code> heading containing the commenter's name and the date of submission</li>
+<li>The text/body of the comment</li>
+</ul>
+<p>Each comment belonging to the same comment stream may also include:</p>
+<ul>
+<li>A reply button</li>
+<li>A sharing button</li>
+<li>Reaction functionality</li>
+<li>An overflow menu containing supplementary functionality such as reporting or sharing the comment</li>
+</ul>
+<p>Where possible, it is advised you do not resort to using the overflow menu (as illustrated in the <a href="https://www.bbc.co.uk/gel/guidelines/comments">main GEL documentation</a>). If there is room, make all functionality visible by default.</p>
+<p>Where the overflow menu <em>is</em> implemented, it should always be as the last control inside the comment, on the right (when rendered in a left-to-right language). It should expand and collapse a horizontal menu of controls according to its <code>aria-expanded</code> state (<code>true</code> for expanded; <code>false</code> for collapsed). Its (visually hidden) text label should read <em>&quot;More&quot;</em>.</p>
+<p>In the following sample, the overflow menu is in the <em>collapsed</em> state, and the menu itself is, accordingly, <code>hidden</code>.</p>
+<pre><code class="prettyprint syntax-html">&lt;button class=&quot;gel-comment__overflow-button&quot; aria-expanded=&quot;false&quot;&gt;
+  &lt;span class=&quot;gel-sr&quot;&gt;More&lt;/span&gt;
+  &lt;svg class=&quot;gel-icon gel-icon--text&quot; focusable=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;use xlink:href=&quot;/path/to/overflow/icon&quot;&gt;&lt;/use&gt;
+  &lt;/svg&gt;
+&lt;/button&gt;
+&lt;div class=&quot;gel-comment__overflow-menu&quot; hidden&gt;&lt;/div&gt;
+</code></pre>
+<h3 id="the-heading">The heading</h3>
+<p>The comment's <code>&lt;h3&gt;</code> heading (see the previous <a href="#the-comments-stream">comments stream</a> section) must include <em>both</em> the commenter's name (as derived from the authenticated user) and the time/date the comment was posted. Only by including the time/date does the <code>&lt;h3&gt;</code> become unique, and therefore discernible by screen reader users navigating an aggregated headings list.</p>
+<h4 id="name-only-headings-list"><div class="circular circular__bad" aria-hidden="true">✕</div> Name-only headings list</h4>
+<ul>
+<li>Clive</li>
+<li>Clive</li>
+<li>Clive</li>
+<li>Judith</li>
+</ul>
+<h4 id="headings-include-timings"><div class="circular circular__good" aria-hidden="true">✓</div> Headings include timings</h4>
+<ul>
+<li>Clive (12:00)</li>
+<li>Clive (12:01)</li>
+<li>Clive (12:04)</li>
+<li>Judith (12:17)</li>
+</ul>
+<h4 id="linking">Linking</h4>
+<p>The heading content should also be wrapped in a link. This enables readers to link directly to, and share, the comment in contention. In the below example, clicking on the link places the comment's unique <code>id</code> in the query string, and focuses the comment itself. The <code>tabindex=&quot;-1&quot;</code> attribution ensures keyboard focus, along with scroll position, is moved to the comment.</p>
+<pre><code class="prettyprint syntax-html">&lt;li class=&quot;gel-comment&quot; id=&quot;comment-1562746727083&quot; tabindex=&quot;-1&quot;&gt;
+  &lt;h3&gt;
+    &lt;a href=&quot;#comment-1562746727083&quot;&gt;
+      Clive
+      &lt;time datetime=&quot;2019-7-10T12:04&quot;&gt;12:04&lt;/time&gt;
+    &lt;/a&gt;
+  &lt;/h3&gt;
+&lt;/li&gt;
+</code></pre>
+<p>The <code>&lt;time&gt;</code> element's text node can display a time, a date, or a colloquialism like <em>&quot;Just now&quot;</em> depending on the circumstances. However, the <code>datetime</code> value should consistently include the machine-readable format of the previous example. Here is how you would convert the current time to this format:</p>
+<pre><code class="prettyprint syntax-js">var now = Date.now();
+var timeParsed = new Date(timestamp);
+var datetime = timeParsed.getFullYear() + &quot;-&quot; + (timeParsed.getMonth() + 1) + &quot;-&quot; + timeParsed.getDate() + 'T' + timeParsed.getHours() + &quot;:&quot; + timeParsed.getMinutes();
+</code></pre>
+<p>Reply comments should contain a link to both the current comment and the comment replied to, using the construction <em>&quot;Person 1 replied to Person 2&quot;</em>:</p>
+<pre><code class="prettyprint syntax-html">&lt;h3&gt;
+  &lt;a href=&quot;#comment-1562762936794&quot;&gt;Steve&lt;/a&gt; 
+  replied to 
+  &lt;a href=&quot;#comment-1562746727083&quot;&gt;Clive&lt;/a&gt;
+  &lt;time datetime=&quot;2019-08-10T13:48&quot;&gt;13:48&lt;/time&gt;
+&lt;/h3&gt;
+</code></pre>
+<p>Theoretically, reply nesting could recurse indefinitely. However, to prevent the comment stream from becoming unwieldy, it is recommended an arbitrary limit is set. Comments, say, 3 replies deep would no longer offer a reply button.</p>
+<h3 id="reaction-functionality">Reaction functionality</h3>
+<p>The type of 'reaction' functionality available will vary depending on the specific BBC product. But, as illustrated in the <a href="https://www.bbc.co.uk/gel/guidelines/comments">GEL Comments guide</a>, it is likely to be a voting or like/dislike mechanism.<br>
+Where the like/dislike controls are implemented as illustrated, they should take the form of a toggle button pair:</p>
+<pre><code class="prettyprint syntax-html">&lt;div class=&quot;gel-comment__vote&quot; role=&quot;group&quot; aria-label=&quot;vote&quot;&gt;
+  &lt;button aria-pressed=&quot;false&quot; aria-descibedby=&quot;total-likes-1562746727083&quot;&gt;
+    &lt;span class=&quot;gel-sr&quot;&gt;Like&lt;/span&gt;
+    &lt;svg class=&quot;gel-icon gel-icon--text&quot; focusable=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use xlink:href=&quot;/gel/static/images/gel-icons-all.svg#gel-icon-like&quot;&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+    &lt;span id=&quot;total-likes-1562746727083&quot; aria-hidden=&quot;true&quot;&gt;216 &lt;span class=&quot;gel-sr&quot;&gt;total&lt;/span&gt;&lt;/span&gt;    
+  &lt;/button&gt;
+  &lt;button aria-pressed=&quot;false&quot; aria-descibedby=&quot;total-dislikes-1562746727083&quot;&gt;
+    &lt;span class=&quot;gel-sr&quot;&gt;Dislike&lt;/span&gt;
+    &lt;svg class=&quot;gel-icon gel-icon--text&quot; focusable=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use xlink:href=&quot;/gel/static/images/gel-icons-all.svg#gel-icon-dislike&quot;&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+    &lt;span id=&quot;total-dislikes-1562746727083&quot; aria-hidden=&quot;true&quot;&gt;34 &lt;span class=&quot;gel-sr&quot;&gt;total&lt;/span&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<ul>
+<li><strong><code>role=&quot;group&quot;</code>:</strong> The group ARIA role<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup> is a generic role to indicate the contents are related/equivalent</li>
+<li><strong><code>aria-label</code>:</strong> This gives a non-visual role to the subcomponent, supplementing visual signification</li>
+<li><strong><code>aria-describedby</code> and <code>aria-hidden=&quot;true&quot;</code>:</strong> <code>aria-describedby</code> appends the total vote count to the <code>&lt;button&gt;</code> screen reader announcement for context. Since the <code>&lt;span&gt;</code> is inside the button, it would also be announced on focus. This is prevented with <code>aria-hidden=&quot;true&quot;</code></li>
+<li><strong><code>gel-sr</code>:</strong> Visually hides elements only needed for non-visual clarification</li>
+</ul>
+<p>See the <a href="#recommended-behaviour">Recommended behaviour</a> section for notes on how state is managed for this functionality.</p>
+<h2 id="recommended-layout">Recommended layout</h2>
+<h3 id="the-sorting-control">The sorting control</h3>
+<p>The biggest challenge in terms of styling is the custom aesthetic for the sorting <code>&lt;select&gt;</code> element. The <a href="http://wtfforms.com">wtfforms.com</a> site includes a solution using <code>appearance: none</code><sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup> and the positioning of a custom downwards-pointing arrow. The <code>&lt;option&gt;</code> elements cannot take many custom styles (only <code>color</code> and <code>background-color</code> are applicable) but this is considered a fair compromise given the robustness of the underlying native control.</p>
+<pre><code class="prettyprint syntax-css">.gel-comments__sort {
+  position: relative;
+}
+
+.gel-comments__sort select {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  background: none;
+  padding-right: 1em;
+}
+
+.gel-comments__sort svg {
+  width: 0.75em;
+  position: absolute;
+  right: 0;
+  top: 0.25em;
+}
+</code></pre>
+<h3 id="reply-styling">Reply styling</h3>
+<p>As set forth in <a href="https://www.bbc.co.uk/gel/guidelines/comments">the GEL Comments guide</a>, reply comments should be demarcated using a vertical line down the left-hand side of the comment. It is recommended this is achieved using a <code>border</code> and not an image or gradient. CSS <code>border</code>s are honoured and visible in Windows High Contrast Mode.</p>
+<pre><code class="prettyprint syntax-css">.gel-comment--reply {
+  padding-left: 1rem;
+  border-left: 2px solid $gel-color--blue;
+}
+</code></pre>
+<h3 id="state-indication">State indication</h3>
+<p>The pressed (<code>aria-pressed=&quot;true&quot;</code>) state of controls must not be indicated only through a change in colour<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>. In the case of the like and dislike voting controls, the <a href="#reference-implementation">reference implementation</a> uses a blue <code>fill</code> for the button's SVG icon.</p>
+<pre><code class="prettyprint syntax-css">  .gel-comment__vote button[aria-pressed=&quot;true&quot;] path {
+    fill: $gel-color--star-command-blue;
+  }
+</code></pre>
+<h2 id="recommended-behaviour">Recommended behaviour</h2>
+<p>Comments, and the ability to write them, should be considered a progressive enhancement and the functionality provided via JavaScript. In the <a href="#reference-implementation">Reference implementations</a> to follow, some plain ES5 JavaScript is used to handle rendering to the DOM. In practice, you are more likely to use a library like React or Vue, and fetch comment data over XHR.</p>
+<p>Where there is latency, a loading spinner may need to be incorporated similar to that implemented in the <a href="../load-more">Load more component</a>. The <a href="#reference-implementation">Reference implementations</a> use dummy content and data and just exemplify the expected layout and interaction behaviour. Rendering is instantaneous.</p>
+<h3 id="posting-a-comment">Posting a comment</h3>
+<p>Where JavaScript is available, comments section is rendered and form validation initialised, as implemented in <a href="../form-fields">Form fields</a>. In this case, the only validation rule is that the <code>id=&quot;your-comment&quot;</code> <code>&lt;textarea&gt;</code> is <code>required</code>. With the following rules object supplied, the <code>aria-required=&quot;true&quot;</code> attribution is automatically added to the <code>&lt;textarea&gt;</code> element.</p>
+<pre><code class="prettyprint syntax-js">var rules = [
+  {
+    name: 'your-comment',
+    required: true,
+  }
+];
+</code></pre>
+<p>The <code>hidden</code> submit button is visible/available whenever the <code>&lt;textarea&gt;</code>'s value in non-empty. Note that this does not do away with form validation, since we still need to provide associated state information (<code>aria-invalid=&quot;true&quot;</code>) to the user while they are typing, and where they might have deleted all their text. It is better to be explicit.</p>
+<p>Submission is suppressed where the required field is empty, and the field's associated error element is populated. The field is marked as invalid with <code>aria-invalid=&quot;true&quot;</code>.</p>
+<pre><code class="prettyprint syntax-html">&lt;div class=&quot;gel-form__divider&quot;&gt;
+  &lt;label for=&quot;your-comment&quot;&gt;Add your comment:&lt;/label&gt;
+  &lt;textarea name=&quot;your-comment&quot; id=&quot;your-comment&quot; name=&quot;comment&quot; rows=&quot;5&quot; aria-describedby=&quot;your-comment-error&quot; aria-required=&quot;true&quot; aria-invalid=&quot;true&quot;&gt;&lt;/textarea&gt;
+  &lt;div class=&quot;gel-form__field-error&quot; id=&quot;your-comment-error&quot;&gt;&lt;strong&gt;Error:&lt;/strong&gt; This field is required&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>When a comment is successfully submitted, the comment stream should be immediately re-rendered to include the new comment. <em>&quot;Thanks! We will check this as quickly as possible before posting&quot;</em> is appended to the <code>class=&quot;gel-comment__success&quot;</code> live region, and the comment box value is emptied. The custom <code>gel-submitted</code> event from the <a href="../form-fields">Form fields</a> validation script can be the 'hook' for this state management.</p>
+<pre><code class="prettyprint syntax-js">form.addEventListener('gel-submitted', function () {
+  successMsg.textContent = 'Thanks! We will check this as quickly as possible before posting.';
+  textarea.value = '';
+});
+</code></pre>
+<p>This message persists until the user unfocuses the submit button (a <code>blur</code> event is emitted). This is recommended over a timed removal, which would mean a change in UI unexpectedly not coinciding with a user action. The submit button itself is also hidden at this juncture (the <code>blur</code> event suggests a keyboard user will have already safely moved to another focusable element).</p>
+<pre><code class="prettyprint syntax-js">submitButton.addEventListener('blur', function () {
+  successMsg.innerHTML = '';
+  submitButton.hidden = true;
+});
+</code></pre>
+<h4 id="character-count">Character count</h4>
+<p>The character count is revealed only when the <code>&lt;textarea&gt;</code> is in focus.</p>
+<pre><code class="prettyprint syntax-css">.gel-comments__chars {
+  display: none;
+}
+
+.gel-comments__form textarea:focus + .gel-comments__chars {
+  display: block;
+}
+</code></pre>
+<p>The accessible text for the character count (<em>&quot;[number] characters remaining&quot;</em>) is announced as part of the <code>&lt;textarea&gt;</code>'s accessible description, thanks to the element's <code>id</code> being included in the <code>&lt;textarea&gt;</code>'s <code>aria-describedby</code> value (see <a href="#recommended-markup">Recommended markup</a>).</p>
+<p>Decrementing the remaining characters is taken care of with an ad hoc script in the <a href="#reference-implementation">reference implementation</a>:</p>
+<pre><code class="prettyprint syntax-js">textarea.addEventListener('input', function () {
+  charsLeft.textContent = 200 - textarea.value.length;
+});
+</code></pre>
+<h4 id="replying">Replying</h4>
+<p>Writing a reply to a comment is first invoked by pressing the original comment's reply button. This should reveal an inline comment form, similar to <a href="#the-comment-form">the main comment form</a>, directly under the reply button, and the reply <code>&lt;textarea&gt;</code> should be focused. Reply forms are not implemented in the <a href="#reference-implementation">reference implementation</a> but they should behave similarly to <a href="#the-comment-form">the main comment form</a>, with character count and validation error messages included.</p>
+<h3 id="sorting">Sorting</h3>
+<p>Selecting a sorting option should immediately re-render the comments stream in the new order. The newly selected option doubles as the control's new label (<em>&quot;Oldest first&quot;</em> in the following example). Since a native <code>&lt;select&gt;</code> control is used, all of the expected behaviours for such a control are present.</p>
+<pre><code class="prettyprint syntax-html">&lt;label class=&quot;gel-comments__sort&quot; for=&quot;comments-sort&quot;&gt;
+  &lt;span class=&quot;gel-sr&quot;&gt;Sort&lt;/span&gt;
+  &lt;select id=&quot;comments-sort&quot;&gt;
+    &lt;option&gt;Latest first&lt;/option&gt;
+    &lt;option selected&gt;Oldest first&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/label&gt;
+</code></pre>
+<h3 id="voting">Voting</h3>
+<p>The example voting functionality illustrated in the <a href="#reaction-functionality">Reaction functionality</a> section can exist in states. At the outset, no voting has taken place. Each <code>&lt;button&gt;</code> takes <code>aria-pressed=&quot;false&quot;</code>.</p>
+<pre><code class="prettyprint syntax-html">&lt;div class=&quot;gel-comment__vote&quot; role=&quot;group&quot; aria-label=&quot;vote&quot;&gt;
+  &lt;button aria-pressed=&quot;false&quot; aria-descibedby=&quot;total-likes-1562746727083&quot;&gt;
+    &lt;span class=&quot;gel-sr&quot;&gt;Like&lt;/span&gt;
+    &lt;svg class=&quot;gel-icon gel-icon--text&quot; focusable=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use xlink:href=&quot;/gel/static/images/gel-icons-all.svg#gel-icon-like&quot;&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+    &lt;span id=&quot;total-likes-1562746727083&quot; aria-hidden=&quot;true&quot;&gt;216 &lt;span class=&quot;gel-sr&quot;&gt;total&lt;/span&gt;&lt;/span&gt;    
+  &lt;/button&gt;
+  &lt;button aria-pressed=&quot;false&quot; aria-descibedby=&quot;total-dislikes-1562746727083&quot;&gt;
+    &lt;span class=&quot;gel-sr&quot;&gt;Dislike&lt;/span&gt;
+    &lt;svg class=&quot;gel-icon gel-icon--text&quot; focusable=&quot;false&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use xlink:href=&quot;/gel/static/images/gel-icons-all.svg#gel-icon-dislike&quot;&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+    &lt;span id=&quot;total-dislikes-1562746727083&quot; aria-hidden=&quot;true&quot;&gt;34 &lt;span class=&quot;gel-sr&quot;&gt;total&lt;/span&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Where <em>either</em> of the buttons are pressed, that button's <code>aria-pressed</code> state is switched to <code>true</code>.</p>
+<pre><code class="prettyprint syntax-html">&lt;button aria-pressed=&quot;true&quot; aria-descibedby=&quot;total-likes-1562746727083&quot;&gt;Like&lt;/button&gt;
+</code></pre>
+<p>Press the same <em>&quot;Like&quot;</em> button again and its state should switch back to <code>aria-pressed=&quot;false&quot;</code>. Accordingly, the total for likes should be decremented. If the <em>&quot;Dislike&quot;</em> button is pressed while the <em>&quot;Like&quot;</em> button is in the <code>aria-pressed=&quot;true&quot;</code> state, both button states change: <em>&quot;Like&quot;</em> to <code>false</code> and <em>&quot;Dislike&quot;</em> to <code>true</code>. Likes decrement by <code>1</code> and dislikes increment by <code>1</code>. Users cannot both like and dislike something simultaneously.</p>
+<h2 id="reference-implementation">Reference implementation</h2>
+
+                    <aside class="geltags-breakout-box geltags-breakout-box extra-padding" aria-labelledby="aside-alert-important">
+                    <h4 id="aside-alert-important" aria-hidden="true"><svg class="geltags-breakout-box__icon geltags-icon geltags-icon--text"><use xlink:href="/gel/static/images/gel-icons-core-set.svg#gel-icon-alert" style="fill:#404040;"></use></svg>Important</h4><div><p>Reference implementations are intended to demonstrate <strong>what needs to be achieved</strong>, but not necessarily how to achieve it. That would depend on the technology stack you are working with. The HTML semantics, layout, and behaviour of your implementation must conform to the reference implementation. Your JS framework, CSS methodology, and—most likely—content will differ.</p>
+</aside><div class="geltags-demo"><!-- 
+title: Comments
+ -->
+
+<style>
+  .shadow-box {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.25rem #ccc;
+  }
+
+  .text-align\:right {
+    text-align: right;
+  }
+</style>
+
+<h3>The comments form</h3>
+
+<div class="gel-comments shadow-box">
+  <form class="gel-comments__form">
+    <p>You're signed in as <strong><a href="path/to/user/comment/history">Ben</a></strong></p>
+    <div class="gel-form__divider">
+      <div class="gel-comments__success" role="status" aria-live="polite"></div>
+    </div>
+    <div class="gel-form__divider">
+      <label for="your-comment">Add your comment</label>
+      <div class="gel-comments__field">
+        <textarea name="your-comment" id="your-comment" maxlength="200" aria-describedby="chars-left"></textarea>
+        <span class="gel-comments__chars" id="chars-left">
+          <span class="gel-comments__chars-left">200</span>
+          <span class="gel-comments__chars-of" aria-hidden="true">/ 200</span>
+          <span class="gel-sr">characters left</span>
+        </span>
+      </div>
+      <div class="gel-form__field-error" id="your-comment-error"></div>
+    </div>
+    <div class="gel-form__divider">
+      <button type="submit" class="gel-button" aria-describedby="your-comment-rules" hidden>Post</button>
+    </div>
+    <p id="your-comment-rules"><small>Comments must follow the <a href="path/to/rules">house rules</a></small>.</p>
+  </form>
+</div>
+
+<h3>The sorting control</h3>
+
+<p>The meta information subcomponent, with a sorting control devised using a native <code>&lt;select></code> element.
+</p>
+
+<div class="gel-comments shadow-box">
+  <div class="gel-comments__meta">
+    <span id="comments-count">186 comments</span>
+    <label class="gel-comments__sort" for="comments-sort">
+      <strong>Show:</strong>
+      <select id="comments-sort">
+        <option selected>Latest first</option>
+        <option>Oldest first</option>
+      </select>
+      <svg viewBox="0 0 32 32">
+        <path d="M16 29L32 3h-7.2L16 18.3 7.2 3H0"></path>
+      </svg>
+    </label>
+  </div>
+</div>
+
+<h3>Voting</h3>
+
+<p>An ad hoc script is provided to demonstrate the expected UI behaviour. A production implementation would be
+  data-driven, and use declarative rendering.</p>
+
+<div class="gel-comments shadow-box text-align:right">
+  <div class="gel-comment__vote" role="group" aria-label="vote">
+    <button aria-pressed="false" aria-descibedby="total-likes-1562746727083">
+      <span class="gel-sr">Like</span>
+      <svg viewBox="0 0 867.20184 971.79153" class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+        <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="65"
+          d="m32.813 475h102.3v417.06h-102.3zm233.17 441.18c-15.486-12.012-33.662-26.413-40.391-32.002-7.231-6.007-29.949-11.786-55.559-14.133-46.844 19.297-31.451 19.953-30.701-165.41.343-84.794.602-210.39 2.981-219 3.91-14.139-25.535 11.714 8.147 9.976 27.517-1.419 40.953-5.387 51.365-15.169 7.756-7.286 14.101-15.6 14.101-18.477 40.428-124.46 180.55-236.28 212.84-372.26.232-27.611 14.837-59.605 61.079-56.932 34.58 1.999 69.415 25.867 77.951 38.651 46.429 87.686-50.003 222.01-20.802 279.07 5.313 8.603 12.54 17.854 16.061 20.556s51.453 4.405 106.52 3.783c105.51-1.191 121.54 1.765 149.34 27.529 33.966 60.426-4.9564 100.75-54.915 129.02 97.032 30.052 73.367 120.23-12.868 139.48 110.49 74.569 24.96 115.63-5.413 127.13 72.296 53.117 46.778 97.487 9.854 121.49-47.394 23.828-167.81 18.96-239.13 18.857l-222.3-.322z" />
+      </svg>
+      <span aria-hidden="true" id="total-likes-1562746727083">216 <span class="gel-sr">total</span></span>
+    </button>
+    <button aria-pressed="false" aria-descibedby="total-dislikes-1562746727083">
+      <span class="gel-sr">Dislike</span>
+      <svg viewBox="0 0 867.20184 971.79153" class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+        <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="65"
+          d="m32.813 496.47h102.3v-417.06h-102.3zm233.17-441.18c-15.486 12.012-33.662 26.413-40.391 32.002-7.231 6.007-29.949 11.786-55.559 14.133-46.844-19.297-31.451-19.953-30.701 165.41.343 84.794.602 210.39 2.981 219 3.91 14.139-25.535-11.714 8.147-9.976 27.517 1.419 40.953 5.387 51.365 15.169 7.756 7.286 14.101 15.6 14.101 18.477 40.428 124.46 180.55 236.28 212.84 372.26.232 27.611 14.837 59.605 61.079 56.932 34.58-1.999 69.415-25.867 77.951-38.651 46.429-87.686-50.003-222.01-20.802-279.07 5.313-8.603 12.54-17.854 16.061-20.556s51.453-4.405 106.52-3.783c105.51 1.191 121.54-1.765 149.34-27.529 33.966-60.426-4.9564-100.75-54.915-129.02 97.032-30.052 73.367-120.23-12.868-139.48 110.49-74.569 24.96-115.63-5.413-127.13 72.296-53.117 46.778-97.487 9.854-121.49-47.394-23.828-167.81-18.96-239.13-18.857l-222.3.322z" />
+      </svg>
+      <span aria-hidden="true" id="total-dislikes-1562746727083">34 <span class="gel-sr">total</span></span>
+    </button>
+  </div>
+</div>
+
+<h3>A comment, including a nested reply</h3>
+
+<p>The following omits the reply functionality.</p>
+
+<div class="gel-comments shadow-box">
+  <ul class="gel-comments__stream">
+    <li class="gel-comment" id="comment-1562746727083" tabindex="-1">
+      <h3 class="gel-comment__title">
+        <a href="#comment-1562746727083">
+          <strong>Clive</strong>
+          <time datetime="2019-8-10T12:04">12:04</time>
+        </a>
+      </h3>
+      <div class="gel-comment__body">
+        <p>Of course they have!<br />Go England!</p>
+      </div>
+      <div class="gel-comment__options">
+        <div class="gel-comment__options-left">
+          <button class="gel-comment__reply-button">
+            <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+              <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-comments"></use>
+            </svg>
+            Reply
+          </button>
+        </div>
+        <div class="gel-comment__options-right">
+          <div class="gel-comment__vote" role="group" aria-label="vote">
+            <button aria-pressed="false" aria-descibedby="total-likes-1562746727083">
+              <span class="gel-sr">Like</span>
+              <svg viewBox="0 0 867.20184 971.79153" class="gel-icon gel-icon--text" focusable="false"
+                aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="65"
+                  d="m32.813 475h102.3v417.06h-102.3zm233.17 441.18c-15.486-12.012-33.662-26.413-40.391-32.002-7.231-6.007-29.949-11.786-55.559-14.133-46.844 19.297-31.451 19.953-30.701-165.41.343-84.794.602-210.39 2.981-219 3.91-14.139-25.535 11.714 8.147 9.976 27.517-1.419 40.953-5.387 51.365-15.169 7.756-7.286 14.101-15.6 14.101-18.477 40.428-124.46 180.55-236.28 212.84-372.26.232-27.611 14.837-59.605 61.079-56.932 34.58 1.999 69.415 25.867 77.951 38.651 46.429 87.686-50.003 222.01-20.802 279.07 5.313 8.603 12.54 17.854 16.061 20.556s51.453 4.405 106.52 3.783c105.51-1.191 121.54 1.765 149.34 27.529 33.966 60.426-4.9564 100.75-54.915 129.02 97.032 30.052 73.367 120.23-12.868 139.48 110.49 74.569 24.96 115.63-5.413 127.13 72.296 53.117 46.778 97.487 9.854 121.49-47.394 23.828-167.81 18.96-239.13 18.857l-222.3-.322z" />
+              </svg>
+              <span aria-hidden="true" id="total-likes-1562746727083">12 <span class="gel-sr">total</span></span>
+            </button>
+            <button aria-pressed="false" aria-descibedby="total-dislikes-1562746727083">
+              <span class="gel-sr">Dislike</span>
+              <svg viewBox="0 0 867.20184 971.79153" class="gel-icon gel-icon--text" focusable="false"
+                aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="65"
+                  d="m32.813 496.47h102.3v-417.06h-102.3zm233.17-441.18c-15.486 12.012-33.662 26.413-40.391 32.002-7.231 6.007-29.949 11.786-55.559 14.133-46.844-19.297-31.451-19.953-30.701 165.41.343 84.794.602 210.39 2.981 219 3.91 14.139-25.535-11.714 8.147-9.976 27.517 1.419 40.953 5.387 51.365 15.169 7.756 7.286 14.101 15.6 14.101 18.477 40.428 124.46 180.55 236.28 212.84 372.26.232 27.611 14.837 59.605 61.079 56.932 34.58-1.999 69.415-25.867 77.951-38.651 46.429-87.686-50.003-222.01-20.802-279.07 5.313-8.603 12.54-17.854 16.061-20.556s51.453-4.405 106.52-3.783c105.51 1.191 121.54-1.765 149.34-27.529 33.966-60.426-4.9564-100.75-54.915-129.02 97.032-30.052 73.367-120.23-12.868-139.48 110.49-74.569 24.96-115.63-5.413-127.13 72.296-53.117 46.778-97.487 9.854-121.49-47.394-23.828-167.81-18.96-239.13-18.857l-222.3.322z" />
+              </svg>
+              <span aria-hidden="true" id="total-dislikes-1562746727083">3 <span class="gel-sr">total</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="gel-comment__replies">
+        <li class="gel-comment gel-comment__reply" id="comment-1562762936794" tabindex="-1">
+          <h3 class="gel-comment__title">
+            <a href="#comment-1562762936794"><strong>Steve</strong></a>
+            replied to
+            <a href="#comment-1562746727083"><strong>Clive</strong></a>
+            <time datetime="2019-08-10T13:48">13:48</time>
+          </h3>
+          <div class="gel-comment__body">
+            <p>I think England are going to go all the way.</p>
+          </div>
+          <div class="gel-comment__options">
+            <div class="gel-comment__options-left">
+              <button class="gel-comment__reply-button">
+                <svg class="gel-icon gel-icon--text" focusable="false" aria-hidden="true">
+                  <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-comments"></use>
+                </svg>
+                Reply
+              </button>
+            </div>
+            <div class="gel-comment__options-right">
+              <div class="gel-comment__vote" role="group" aria-label="vote">
+                <button aria-pressed="false" aria-descibedby="total-likes-1562746727083">
+                  <span class="gel-sr">Like</span>
+                  <svg viewBox="0 0 867.20184 971.79153" class="gel-icon gel-icon--text" focusable="false"
+                    aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round"
+                      stroke-width="65"
+                      d="m32.813 475h102.3v417.06h-102.3zm233.17 441.18c-15.486-12.012-33.662-26.413-40.391-32.002-7.231-6.007-29.949-11.786-55.559-14.133-46.844 19.297-31.451 19.953-30.701-165.41.343-84.794.602-210.39 2.981-219 3.91-14.139-25.535 11.714 8.147 9.976 27.517-1.419 40.953-5.387 51.365-15.169 7.756-7.286 14.101-15.6 14.101-18.477 40.428-124.46 180.55-236.28 212.84-372.26.232-27.611 14.837-59.605 61.079-56.932 34.58 1.999 69.415 25.867 77.951 38.651 46.429 87.686-50.003 222.01-20.802 279.07 5.313 8.603 12.54 17.854 16.061 20.556s51.453 4.405 106.52 3.783c105.51-1.191 121.54 1.765 149.34 27.529 33.966 60.426-4.9564 100.75-54.915 129.02 97.032 30.052 73.367 120.23-12.868 139.48 110.49 74.569 24.96 115.63-5.413 127.13 72.296 53.117 46.778 97.487 9.854 121.49-47.394 23.828-167.81 18.96-239.13 18.857l-222.3-.322z" />
+                  </svg>
+                  <span aria-hidden="true" id="total-likes-1562746727083">4 <span class="gel-sr">total</span></span>
+                </button>
+                <button aria-pressed="false" aria-descibedby="total-dislikes-1562746727083">
+                  <span class="gel-sr">Dislike</span>
+                  <svg viewBox="0 0 867.20184 971.79153" class="gel-icon gel-icon--text" focusable="false"
+                    aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round"
+                      stroke-width="65"
+                      d="m32.813 496.47h102.3v-417.06h-102.3zm233.17-441.18c-15.486 12.012-33.662 26.413-40.391 32.002-7.231 6.007-29.949 11.786-55.559 14.133-46.844-19.297-31.451-19.953-30.701 165.41.343 84.794.602 210.39 2.981 219 3.91 14.139-25.535-11.714 8.147-9.976 27.517 1.419 40.953 5.387 51.365 15.169 7.756 7.286 14.101 15.6 14.101 18.477 40.428 124.46 180.55 236.28 212.84 372.26.232 27.611 14.837 59.605 61.079 56.932 34.58-1.999 69.415-25.867 77.951-38.651 46.429-87.686-50.003-222.01-20.802-279.07 5.313-8.603 12.54-17.854 16.061-20.556s51.453-4.405 106.52-3.783c105.51 1.191 121.54-1.765 149.34-27.529 33.966-60.426-4.9564-100.75-54.915-129.02 97.032-30.052 73.367-120.23-12.868-139.48 110.49-74.569 24.96-115.63-5.413-127.13 72.296-53.117 46.778-97.487 9.854-121.49-47.394-23.828-167.81-18.96-239.13-18.857l-222.3.322z" />
+                  </svg>
+                  <span aria-hidden="true" id="total-dislikes-1562746727083">1 <span class="gel-sr">total</span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Sort control placeholder script
+    var sorter = document.getElementById('comments-sort');
+    sorter.addEventListener('change', function () {
+      alert('TODO: Change the comment stream\'s sort order to ' + sorter.value);
+    });
+
+    // Reply placeholder script
+    var replyButtons = document.querySelectorAll('.gel-comment__reply-button');
+    Array.prototype.forEach.call(replyButtons, function (button) {
+      button.addEventListener('click', function () {
+        alert('TODO: Reveal and focus an inline version of the comment form for writing the reply');
+      });
+    });
+
+    // Voting placeholder script
+    var voters = document.querySelectorAll('.gel-comment__vote');
+    Array.prototype.forEach.call(voters, function (voter) {
+      var voterButtons = Array.prototype.slice.call(voter.querySelectorAll('button'));
+      var totals = Array.prototype.slice.call(voter.querySelectorAll('span[id]'));
+      voter.addEventListener('click', function (e) {
+        var index = voterButtons.indexOf(e.target);
+        if (index > -1) {
+          var otherIndex = index === 0 ? 1 : 0;
+          var pressed = voterButtons[index].getAttribute('aria-pressed') === 'true';
+          var otherPressed = voterButtons[otherIndex].getAttribute('aria-pressed') === 'true';
+          if (pressed) {
+            voterButtons[index].setAttribute('aria-pressed', 'false');
+            totals[index].textContent = parseInt(totals[index].textContent) - 1;
+          } else {
+            voterButtons[index].setAttribute('aria-pressed', 'true');
+            totals[index].textContent = parseInt(totals[index].textContent) + 1;
+            if (otherPressed) {
+              voterButtons[otherIndex].setAttribute('aria-pressed', 'false');
+              totals[otherIndex].textContent = parseInt(totals[otherIndex].textContent) - 1;
+            }
+          }
+        }
+      });
+    });
+
+    // Comment form placeholder script
+    var form = document.querySelector('.gel-comments__form');
+    var submitButton = form.querySelector('[type="submit"]');
+    var textarea = form.querySelector('textarea');
+    var successMsg = form.querySelector('.gel-comments__success');
+    var charsLeft = form.querySelector('.gel-comments__chars-left');
+
+    textarea.addEventListener('input', function () {
+      submitButton.hidden = textarea.value === '';
+      charsLeft.textContent = 200 - textarea.value.length;
+    });
+
+    textarea.addEventListener('focus', function () {
+      if (textarea.value === '') {
+        submitButton.hidden = true;
+      }
+    });
+
+    submitButton.addEventListener('blur', function () {
+      successMsg.innerHTML = '';
+      submitButton.hidden = true;
+    });
+
+    // Form validation 
+    var rules = [
+      {
+        name: 'your-comment',
+        required: true
+      }
+    ];
+
+    window.gel && gel.Validation.init();
+    var formValidation = new gel.Validation.constructor(form, rules);
+
+    form.addEventListener('gel-submitted', function () {
+      successMsg.innerHTML = 'Thanks! We will check this as quickly as possible before posting.';
+      textarea.value = '';
+      charsLeft.textContent = 200;
+    });
+  });
+</script></div><p><a class="gel-cta gel-long-primer-bold" href="../demos/comments/" target="_new"><span class="gel-button__label">Open in new window</span><svg class="gel-button__icon gel-icon gel-icon--text"><use xlink:href="/gel/static/images/gel-icons-core-set.svg#gel-icon-external-link"></use></svg></a></p><h2 id="related-research">Related research</h2>
+<p>This topic does not yet have any related research available.</p>
+<h3 id="further-reading-elsewhere-on-the-web">Further reading, elsewhere on the Web</h3>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Complementary Landmark — W3C, <a href="https://www.w3.org/TR/wai-aria-practices/examples/landmarks/complementary.html">https://www.w3.org/TR/wai-aria-practices/examples/landmarks/complementary.html</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Using the <code>aria-describedby</code> attribute — MDN, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute">https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>ARIA live regions — MDN, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>ARIA Practices: Menu Button — WAI, <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton">https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>WTFForms — Mark Otto, <a href="http://wtfforms.com/">http://wtfforms.com/</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>NVDA Keyboard Shortcuts — Deque University, <a href="https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts">https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Using the <code>group</code> role — MDN, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_group_role">https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_group_role</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p><code>appearance</code> — MDN, <a href="https://css-tricks.com/almanac/properties/a/appearance/">https://css-tricks.com/almanac/properties/a/appearance/</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>WCAG2.1 1.4.1 Use Of Color, <a href="https://www.w3.org/TR/WCAG21/#use-of-color">https://www.w3.org/TR/WCAG21/#use-of-color</a> <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+                <aside class="geltags-breakout-box geltags-breakout-box extra-padding"
+                    aria-labelledby="aside-info-Could-you-improve-this-documentation">
+                    <h4 id="aside-info-Could-you-improve-this-documentation" aria-hidden="true">
+                        <svg class="geltags-breakout-box__icon geltags-icon geltags-icon--text">
+                            <use xlink:href="/gel/static/images/gel-icons-core-set.svg#gel-icon-info"
+                                style="fill:#404040;"></use>
+                        </svg>Could you improve this documentation?
+                    </h4>
+                    <div>
+                        <p>
+                            If you think you could make anything you see here a bit better then become one of <a
+                                href="/gel/contributors/">our
+                                lovely contributors</a>!
+                        </p>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="geltags-feedback-banner">
+        <div class="gel-wrap">
+            <div class="gel-layout">
+                <div class="gel-layout__item gel-2/3@l gel-3/5@xl">
+                    <p><small>Copyright &copy; 2021 BBC. This content is published under the Open Government Licence, unless otherwise noted.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script nomodule defer type="text/javascript" src="/gel/static/js/external-svg-polyfill.js"></script>
+    <script type="text/javascript" src="/gel/static/js/gel.js"></script>
+
+    
+
+    <script type="text/javascript">
+        new Sticky('.sticky');
+    </script>
+
+    <!-- BBC ATI analytics -->
+    <script type="text/javascript" src="/gel/static/js/smarttag.js"></script>
+
+    <script type="text/javascript"> // create ATI tag and submit
+    (function() {
+        var url = document.URL;
+        var ref = document.referrer;
+        var title = document.querySelector("meta[property='og:title']").getAttribute("content").toLowerCase().split(': ');
+        var siteTitle = '' + title[0].replace(/ /g, ".").replace(/[^a-zA-Z0-9.]/g, "").replace(/\.+/g, ".");
+        var pageTitle = '' + title[1].replace(/ /g, "-").replace(/[^a-zA-Z0-9-]/g, "").replace(/-+/g, "-");
+        pageTitle = siteTitle + '.' + pageTitle +'.page';
+
+        var ATTag = new ATInternet.Tracker.Tag({ secure: true });
+
+        ATTag.page.set({ name: pageTitle });
+
+        var siteCustomVars = {
+            "2": "[responsive]",
+            "3": "[bbc_website]",
+            "4": "[en]",
+            "5": "[" + url + "]",
+            "6": (ref? "[" + ref + "]" : undefined),
+            "8": "[direct-hit]",
+            "9": "[" + pageTitle + "]"
+        };
+        ATTag.customVars.set({ site: siteCustomVars });
+        
+        if (document.URL.match(/\/\/bbc\.github\.io\/gel/i)) {
+            ATTag.dispatch();
+        }
+        else {
+            console.log('ATI tag not sent:', siteTitle, siteCustomVars);
+        }
+    })();
+    </script>
+</body>
+
+</html>

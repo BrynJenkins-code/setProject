@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" class="b-pw-1280 b-reith-sans-font b-reith-serif-font no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/gel/static/images/favicon.ico" type="image/x-icon">
+
+    <title>GEL | Table of contents Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="/gel/static/css/gel.css">
+
+    <script type="text/javascript"> // feature detects
+        document.documentElement.className = document.documentElement.className.replace(' no-js', ' js');
+        document.documentElement.className += (' ' + ('ontouchstart' in document.documentElement ? 'touch' : 'no-touch'));
+        document.documentElement.className += (' ' + ('flexWrap' in document.documentElement.style ? 'flex' : 'no-flex'));
+        document.documentElement.className += (' ' + ((document.createElementNS && 'createSVGRect' in document.createElementNS('http://www.w3.org/2000/svg', 'svg')) ? 'svg' : 'no-svg'));
+    </script>
+
+    
+</head>
+
+<body style="margin: 0">
+    <div style="padding: 1rem;">
+        <h1 class="gel-guideline-header__title">Table of contents</h1>
+        <h2>Reference implementation</h2>
+    </div>
+    <nav class="gel-sitemenu" aria-labelledby="gel-sitemenu__label">
+  <span id="gel-sitemenu-label" hidden>This site</span>
+  <button class="gel-sitemenu__menu-button" type="button" aria-expanded="false">
+    <svg class="gel-icon gel-icon--text" focusable="false">
+      <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-list"></use>
+    </svg>
+    Menu
+  </button>
+  <ul class="gel-sitemenu__list">
+    <li><a href="#" aria-current="page">Home</a></li>
+    <li>
+      <button class="gel-sitemenu__more-button" type="button" aria-expanded="false">
+        Guidelines
+        <svg class="gel-icon gel-icon--text" focusable="false">
+          <use xlink:href="/gel/static/images/gel-icons-all.svg#gel-icon-down"></use>
+        </svg>
+      </button>
+      <div class="gel-sitemenu__more">
+        <div class="gel-sitemenu__more-inner">
+          <ul>
+            <li><a href="#">Foundations</a></li>
+            <li><a href="#">Design patterns</a></li>
+            <li><a href="#">How-tos</a></li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li><a href="#">Articles</a></li>
+    <li><a href="#">About UX&amp;D</a></li>
+  </ul>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.gel && gel.SiteMenu.init();
+
+    var menuElem = document.querySelector('.gel-sitemenu');
+    var menu = new gel.SiteMenu.constructor(menuElem);
+  });
+</script>
+
+    <script type="text/javascript" src="/gel/static/js/gel.js"></script>
+
+    
+</body>
+
+</html>

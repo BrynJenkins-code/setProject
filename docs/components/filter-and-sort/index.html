@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en" class="b-pw-1280 b-reith-sans-font b-reith-serif-font no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/gel/static/images/favicon.ico" type="image/x-icon">
+
+    <title>GEL | Filter &amp; Sort</title>
+    <meta property="og:title" content="GEL Technical Guide: Filter &amp; Sort">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bbc.github.io/gel/">
+    <meta property="og:image" content="https://bbc.github.io/gel/static/images/bbc-gel-logo.png">
+    <meta property="og:description" content="Guidance for developers who wish to implement BBC GEL component patterns in ways that follow all BBC accessibility standards.">
+    <meta property="og:locale" content="en_GB">
+    <meta name="version_number" content="1.0">
+
+    <script src="/gel/static/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" href="/gel/static/css/gel.css">
+    <link rel="stylesheet" type="text/css" href="/gel/static/css/site.css">
+
+    <script type="text/javascript"> // feature detects
+        document.documentElement.className = document.documentElement.className.replace(' no-js', ' js');
+        document.documentElement.className += (' ' + ('ontouchstart' in document.documentElement ? 'touch' : 'no-touch'));
+        document.documentElement.className += (' ' + ('flexWrap' in document.documentElement.style ? 'flex' : 'no-flex'));
+        document.documentElement.className += (' ' + ((document.createElementNS && 'createSVGRect' in document.createElementNS('http://www.w3.org/2000/svg', 'svg')) ? 'svg' : 'no-svg'));
+    </script>
+
+    <script type="text/javascript">
+        try {
+            (new FontFaceObserver('ReithSans', 5000)).load().then(function () {
+                document.documentElement.className += ' b-reith-sans-loaded';
+            });
+            (new FontFaceObserver('ReithSerif', 5000)).load().then(function () {
+                document.documentElement.className += ' b-reith-loaded';
+            });
+        } catch (e) {
+            console.log('Reith fonts did not load within 5 seconds.');
+        }
+    </script>
+
+    
+</head>
+
+<body class="geltags-body">
+    <p class="gel-sr gel-sr__focusable gel-sr__overlay" tabindex="0">
+        <a href="#main" onfocus="this.parentNode.classList.add('gel-sr__focused')"
+            onblur="this.parentNode.classList.remove('gel-sr__focused')">Skip
+            to content</a>
+    </p>
+
+    <header>
+        <div class="geltags-header gs-u-clearfix">
+            <div class="gel-wrap">
+                <a href="http://www.bbc.co.uk/"><svg aria-label="BBC GEL Logo" width="100" height="24"
+                        viewBox="0 0 100 24">
+                        <title>BBC</title>
+                        <image xlink:href="/gel/static/images/bbc-blocks_grey.svg"
+                            src="/gel/static/images/bbc-blocks_grey.png" width="100%" height="100%"></image>
+                    </svg></a>
+            </div>
+        </div>
+        <div class="geltags-header__banner gs-u-clearfix">
+            <div class="gel-wrap">
+                <div class="gel-layout">
+                    <div class="gel-layout__item gel-2/5@l"
+                        style="text-align:left; padding-left:13px; margin-bottom:32px; margin-top: -12px;">
+                        <a href="/gel/" class="geltags-logo"><img src="/gel/static/images/bbc-gel-logo.png" alt="BBC GEL, global experience language" style="max-width:169px;"></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1" class="gel-wrap gs-u-clearfix">
+        <div class="gel-layout">
+            <div class="gel-layout__item gel-1/5@l">
+                <!-- column placeholder-->
+            </div>
+
+            <div class="gel-layout__item gel-2/5@l" style="padding-right: 12px;">
+                <h1 class="geltags-header__title">Filter &amp; Sort</h1>
+                <p class="geltags-header__summary gel-great-primer">Filters help the user find what they’re looking for. Allowing the user to refine content by selecting criteria that’s relevant to their needs.</p>
+            </div>
+
+            <div class="gel-layout__item gel-1/5@l">
+                <dl class="geltags-standout-box">
+                    
+                    <dt>Version:</dt>
+                    <dd>0.1.0</dd>
+                    
+                    <dt>Status:</dt>
+                    <dd>Published</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="gel-layout">
+            <div class="gel-layout__item gel-1/5@l">
+                <nav role="navigation" id="side-nav" class="gel-side-nav sticky" data-sticky-for="900"
+                    style="padding-top:32px">
+                    <div class="gel-pica gs-u-mb gs-u-mt0">Contents</div>
+                    <ol id="geltags-toc__links" class="geltags-toc"><li><a href="#introduction">Introduction</a></li><li><a href="#recommended-markup">Recommended markup</a></li><li><a href="#recommended-layout">Recommended layout</a></li><li><a href="#recommended-behaviour">Recommended behaviour</a></li><li><a href="#sorting-options">Sorting options</a></li><li><a href="#reference-implementation">Reference implementation</a></li><li><a href="#related-research">Related research</a></li></ol>
+                </nav>
+            </div>
+
+            <div class="geltags-sections geltags-body-copy gel-layout__item gel-3/5@l">
+                <h2 id="introduction">Introduction</h2>
+<p>Users arrive at search results pages having submitted a search query to a global or local <a href="../search"><strong>Search</strong></a> component. To help them find what they are looking for among the results, filtering and sorting tools are provided.</p>
+<p>Unlike in some implementations, utilizing XHR requests, BBC filtering tools constitute a set of links corresponding to query parameters. The base URL is <a href="https://www.bbc.co.uk/search">https://www.bbc.co.uk/search</a>. Since this mechanism does not require JavaScript, the interface itself should not either. JavaScript is only incorporated as a progressive enhancement, and only to improve the component's responsiveness.</p>
+<h2 id="recommended-markup">Recommended markup</h2>
+<p>Since it incorporates lists of links to separate pages, the filtering functionality is encapsulated in a navigation region<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. The following code sample illustrates the filter component in its initial state, where JavaScript has yet to run. It is perfectly funtional in this state.</p>
+<pre><code class="prettyprint syntax-html">&lt;nav class=&quot;gel-filter&quot; aria-labelledby=&quot;filter-label&quot;&gt;
+  &lt;div class=&quot;gel-filter__bar&quot;&gt;
+    &lt;span class=&quot;gel-filter__label&quot; id=&quot;filter-label&quot; aria-hidden=&quot;true&quot;&gt;Filter:&lt;/span&gt;
+    &lt;ul class=&quot;gel-filter__list&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;?filter=filter+1&quot; aria-current=&quot;page&quot;&gt;Filter 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;?filter=filter+2&quot;&gt;Filter 2&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;?filter=filter+3&quot;&gt;Filter 3&lt;/a&gt;&lt;/li&gt;
+      &lt;!-- more --&gt;
+    &lt;/ul&gt;
+    &lt;button class=&quot;gel-filter__more&quot; aria-expanded=&quot;false&quot; hidden&gt;
+      More
+      &lt;svg class=&quot;gel-icon gel-icon--text&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;
+        &lt;use xlink:href=&quot;../../static/images/gel-icons-all.svg#gel-icon-down&quot;&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;gel-filter__popup&quot; hidden&gt;&lt;/div&gt;
+  &lt;div class=&quot;gel-filter__sort&quot;&gt;
+    &lt;span class=&quot;gel-filter__sort-label&quot;&gt;Sort by:&lt;/span&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;.?filter=filter+1&amp;sort=relevance&quot; aria-current=&quot;page&quot;&gt;Relevance&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;.?filter=filter+1&amp;sort=date&quot;&gt;Date&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+<h3 id="notes">Notes</h3>
+<ul>
+<li><strong><code>aria-labelledby=&quot;filter-label&quot;</code>:</strong> The visible label 'filter' is associated with the <code>&lt;nav&gt;</code> element explicitly. This relationship means that screen reader users will find the region marked as &quot;Filter&quot; in aggregated landmark menus. This differentiates it from other navigation regions/landmarks on the page. This cannot be encountered directly by assistive technologies because it takes <code>aria-hidden=&quot;true&quot;</code>. Since it forms a group label, direct encounter would be unnecessary and only at to verbosity.</li>
+<li><strong><code>.gel-filter__list</code>:</strong> As is conventional for navigation, options/links are grouped into lists. Lists are identified in screen readers and their items enumerated, proffering valuable non-visual context.</li>
+<li><strong><code>.gel-filter__more</code>:</strong> The &quot;More&quot; button is hidden by default (taking <code>hidden</code>), and acts as a toggle button where available. Its initial state is <code>false</code>, meaning the button would be identified as <em>&quot;More, toggle button, collapsed&quot;</em> or similar in screen readers.</li>
+<li><strong><code>.gel-filter__popup</code>:</strong> An empty element is included, <code>hidden</code> by default. This is populated by the additional items accessible from the &quot;More&quot; button where JavaScript is available and <code>IntersectionObserver</code> supported. See the <a href="#recommended-behaviour"><strong>Recommended behaviour</strong></a> section for more.</li>
+<li><strong><code>.gel-filter__sort</code>:</strong> A supplementary list of links are provided for sorting the current filter option.</li>
+<li><strong><code>aria-current=&quot;page&quot;</code>:</strong> The <code>aria-current</code> attribute<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> is used to indicate the link corresponding to the current page. In this example, the first filter and &quot;Relevance&quot; sorting option both correspond to the current page, so each take the attribute (the page's query string would be <code>?filter=filter+1&amp;sort=relevance</code> — as on the sorting link's <code>href</code>).</li>
+</ul>
+<h2 id="recommended-layout">Recommended layout</h2>
+<p>The horizontal configuration of the filter subcomponents is facilitated by the widely supported Flexbox module<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</p>
+<p>In the absence of JavaScript, the principle list of filter links is allowed to grow and shrink, and takes <code>overflow-x: auto</code>. That is, where there is not enough room to display all of the filter links, horizontal scrolling is instated. To give the scrollable region more perceived affordance<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> in systems, like MacOS, that tend to hide scrollbars, explicit scrollbar styling is included:</p>
+<pre><code class="prettyprint syntax-css">.gel-filter__list::-webkit-scrollbar {
+  height: 0.125rem;
+}
+
+.gel-filter__list::-webkit-scrollbar-track {
+  background-color: $gel-color--dusty-gray; 
+}
+
+.gel-filter__list::-webkit-scrollbar-thumb {
+  background-color: $gel-color--tundora; 
+}
+</code></pre>
+<p>Where JavaScript runs, and <code>IntersectionObserver</code><sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> is supported, <code>overflow: hidden</code> is instated instead. Items that do not fit within the available space are hidden visually, from screen reader output, and prevented from being focused with <code>visibility: hidden</code>. Clones are made of these hidden items, and they are placed in the auxiliary &quot;More&quot; menu (<code>.gel-filter__popup</code>). See <a href="#recommended-behaviour"><strong>Recommended behaviour</strong></a>, below, for more.</p>
+<h2 id="recommended-behaviour">Recommended behaviour</h2>
+<p>The benefit of using native link elements and (RESTful) URLs is that the functionality works in the absence of JavaScript. As mentioned in <a href="#recommended-layout"><strong>Recommended layout</strong></a>, horizontal scrolling allows the user to access links obscured by a narrow viewport. Where JavaScript runs, these obscured links are appended to the auxiliary <code>.gel-filter__popup</code> element, the appearance of which—hidden or unhidden—being toggled by the <code>.gel-filter__more</code> button. Two methods are provided in the <a href="#reference-implementation"><strong>Reference implementation</strong></a>: <code>showPopup()</code> and <code>hidePopup</code>.</p>
+<pre><code class="prettyprint syntax-js">self.constructor.prototype.showPopup = function () {
+  this.moreButton.setAttribute('aria-expanded', 'true');
+  this.popup.hidden = false;
+}
+
+self.constructor.prototype.hidePopup = function () {
+  this.moreButton.setAttribute('aria-expanded', 'false');
+  this.popup.hidden = true;
+}
+</code></pre>
+<p>The first link of the <code>.gel-filter__popup</code> is the next interactive element in focus order after the &quot;More&quot; button, making focus management<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> (and/or reliance on the poorly supported <code>aria-controls</code> attribute<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>) unnecessary.</p>
+<h3 id="results">Results</h3>
+<p>The results attained by choosing a filter link should be organized and behave as outlined in the <a href="../load-more"><strong>Load more</strong></a> pattern. In the <a href="#reference-implementation"><strong>Reference implementation</strong></a> here, a live implementation of the <a href="../load-more"><strong>Load more</strong></a> pattern is supplanted by a simple, descriptive placeholder for brevity.</p>
+<h2 id="sorting-options">Sorting options</h2>
+<p>Some implementations of sorting options take the form of dropdown menus. Since sorting options are few in number, there's no need to obscure options inside a menu. Radio buttons are preferable, since they show all the available options simultaneously. However, loading a page 'on input', would go against expected and standard behaviour, and would violate <strong>WCAG2.1 3.2.2 On Input</strong><sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>.</p>
+<p>Instead, the sorting options are provided as links (like the filtering options), and the chosen sorting option takes <code>aria-current=&quot;page&quot;</code>. An attribute selector is used to style the element.</p>
+<pre><code class="prettyprint syntax-css">.gel-filter__sort [aria-current] {
+  text-decoration: none;
+  background-color: $gel-color--star-command-blue;
+  color: #fff;
+}
+</code></pre>
+<h2 id="reference-implementation">Reference implementation</h2>
+
+                    <aside class="geltags-breakout-box geltags-breakout-box extra-padding" aria-labelledby="aside-alert-important">
+                    <h4 id="aside-alert-important" aria-hidden="true"><svg class="geltags-breakout-box__icon geltags-icon geltags-icon--text"><use xlink:href="/gel/static/images/gel-icons-core-set.svg#gel-icon-alert" style="fill:#404040;"></use></svg>Important</h4><div><p>Reference implementations are intended to demonstrate <strong>what needs to be achieved</strong>, but not necessarily how to achieve it. That would depend on the technology stack you are working with. The HTML semantics, layout, and behaviour of your implementation must conform to the reference implementation. Your JS framework, CSS methodology, and—most likely—content will differ.</p>
+</aside><p><a class="gel-cta gel-long-primer-bold" href="../demos/filter/?filter=filter+1&sort=relevance" target="_new"><span class="gel-button__label">Open in new window</span><svg class="gel-button__icon gel-icon gel-icon--text"><use xlink:href="/gel/static/images/gel-icons-core-set.svg#gel-icon-external-link"></use></svg></a></p><h2 id="related-research">Related research</h2>
+<p>This topic does not yet have any related research available.</p>
+<h3 id="further-reading-elsewhere-on-the-web">Further reading, elsewhere on the Web</h3>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>ARIA landmark example — W3C, <a href="https://www.w3.org/TR/wai-aria-practices/examples/landmarks/navigation.html">https://www.w3.org/TR/wai-aria-practices/examples/landmarks/navigation.html</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Using the <code>aria-current</code> attribute — Léonie Watson, <a href="https://tink.uk/using-the-aria-current-attribute/">https://tink.uk/using-the-aria-current-attribute/</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>CSS Flexible Box Layout Module — <a href="http://caniuse.com">caniuse.com</a>, <a href="https://caniuse.com/#feat=flexbox">https://caniuse.com/#feat=flexbox</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Perceived Affordances — Johnny Holland, <a href="http://johnnyholland.org/2010/04/perceived-affordances-and-designing-for-task-flow/">http://johnnyholland.org/2010/04/perceived-affordances-and-designing-for-task-flow/</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p><code>IntersectionObserver</code> API — MDN, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Managing Focus For Accessibility — Rob Dodson, <a href="https://dev.to/robdodson/managing-focus-64l">https://dev.to/robdodson/managing-focus-64l</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>ARIA-controls is Poop — <a href="http://heydonworks.com">heydonworks.com</a>, <a href="https://www.heydonworks.com/article/aria-controls-is-poop">https://www.heydonworks.com/article/aria-controls-is-poop</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>WCAG2.1 3.2.2 On Input — W3C, <a href="https://www.w3.org/TR/WCAG21/#on-input">https://www.w3.org/TR/WCAG21/#on-input</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+                <aside class="geltags-breakout-box geltags-breakout-box extra-padding"
+                    aria-labelledby="aside-info-Could-you-improve-this-documentation">
+                    <h4 id="aside-info-Could-you-improve-this-documentation" aria-hidden="true">
+                        <svg class="geltags-breakout-box__icon geltags-icon geltags-icon--text">
+                            <use xlink:href="/gel/static/images/gel-icons-core-set.svg#gel-icon-info"
+                                style="fill:#404040;"></use>
+                        </svg>Could you improve this documentation?
+                    </h4>
+                    <div>
+                        <p>
+                            If you think you could make anything you see here a bit better then become one of <a
+                                href="/gel/contributors/">our
+                                lovely contributors</a>!
+                        </p>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="geltags-feedback-banner">
+        <div class="gel-wrap">
+            <div class="gel-layout">
+                <div class="gel-layout__item gel-2/3@l gel-3/5@xl">
+                    <p><small>Copyright &copy; 2021 BBC. This content is published under the Open Government Licence, unless otherwise noted.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script nomodule defer type="text/javascript" src="/gel/static/js/external-svg-polyfill.js"></script>
+    <script type="text/javascript" src="/gel/static/js/gel.js"></script>
+
+    
+
+    <script type="text/javascript">
+        new Sticky('.sticky');
+    </script>
+
+    <!-- BBC ATI analytics -->
+    <script type="text/javascript" src="/gel/static/js/smarttag.js"></script>
+
+    <script type="text/javascript"> // create ATI tag and submit
+    (function() {
+        var url = document.URL;
+        var ref = document.referrer;
+        var title = document.querySelector("meta[property='og:title']").getAttribute("content").toLowerCase().split(': ');
+        var siteTitle = '' + title[0].replace(/ /g, ".").replace(/[^a-zA-Z0-9.]/g, "").replace(/\.+/g, ".");
+        var pageTitle = '' + title[1].replace(/ /g, "-").replace(/[^a-zA-Z0-9-]/g, "").replace(/-+/g, "-");
+        pageTitle = siteTitle + '.' + pageTitle +'.page';
+
+        var ATTag = new ATInternet.Tracker.Tag({ secure: true });
+
+        ATTag.page.set({ name: pageTitle });
+
+        var siteCustomVars = {
+            "2": "[responsive]",
+            "3": "[bbc_website]",
+            "4": "[en]",
+            "5": "[" + url + "]",
+            "6": (ref? "[" + ref + "]" : undefined),
+            "8": "[direct-hit]",
+            "9": "[" + pageTitle + "]"
+        };
+        ATTag.customVars.set({ site: siteCustomVars });
+        
+        if (document.URL.match(/\/\/bbc\.github\.io\/gel/i)) {
+            ATTag.dispatch();
+        }
+        else {
+            console.log('ATI tag not sent:', siteTitle, siteCustomVars);
+        }
+    })();
+    </script>
+</body>
+
+</html>
