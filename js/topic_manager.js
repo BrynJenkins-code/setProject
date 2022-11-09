@@ -12,8 +12,13 @@ createLinks(topics);
 let links = document.querySelectorAll(".link");
 for (let index = 0; index < links.length; index++) {
   links[index].addEventListener("click", () => {
-    localStorage.clear();
-    localStorage.setItem("topic", links[index].innerHTML);
+    if (links[index].href == "http://localhost:3000/quiz.html") {
+      localStorage.clear();
+      localStorage.setItem("topic", links[index].innerText);
+    } else {
+      localStorage.clear();
+      localStorage.setItem("topic", links[index].alt);
+    }
   });
 }
 
@@ -22,11 +27,16 @@ function createLinks(topics) {
     let topicContainer = document.createElement("div");
     topicContainer.classList.add("topicContainers");
 
+    let imageAnchor = document.createElement("a");
+    imageAnchor.href = "quiz.html";
+
     let topicImage = document.createElement("img");
     topicImage.src = `../media/topics/${topics[i]}.jpg`;
     topicImage.classList.add("topicimages");
+    topicImage.classList.add("link");
     topicImage.alt = `${topics[i]}`;
-    topicContainer.appendChild(topicImage);
+    imageAnchor.appendChild(topicImage);
+    topicContainer.appendChild(imageAnchor);
     var a = document.createElement("a");
     var linkText = document.createTextNode(topics[i]);
     a.appendChild(linkText);
