@@ -23,7 +23,7 @@ var currentScore = 0;
 var selections = []; //Array containing user choices
 var quiz = $("#quiz"); //Quiz div object
 questions = loadQuestions(questions, selected_topic, difficulty);
-updateTopicMetrics(selected_topic, difficulty)
+updateTopicMetrics(selected_topic, difficulty);
 
 // Display initial question
 displayNext();
@@ -131,26 +131,21 @@ function createRadios(index) {
 
 function createVideo(index) {
   if (questions[index].video) {
-    // return $(
-    //   '<iframe width="1212" height="682" src="' +
-    //     questions[index].video +
-    //     '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
-    // );
     return $(
-      '<iframe class="gel-card__content" src="' +
-      questions[index].video +
-      '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
+      '<iframe class="gel-card__content question_videos" src="' +
+        questions[index].video +
+        '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     );
   }
 }
 function createImage(index) {
   if (questions[index].image && questions[index].altText) {
     return $(
-      '<img class="gel-card__content" src="../media/questions/' +
-      questions[index].image +
-      '" alt="' +
-      questions[index].altText +
-      '">'
+      '<img class="gel-card__content question_images" src="../media/questions/' +
+        questions[index].image +
+        '" alt="' +
+        questions[index].altText +
+        '">'
     );
   }
 }
@@ -210,10 +205,10 @@ function displayScore() {
 
   score.append(
     "You got " +
-    numCorrect +
-    " questions out of " +
-    questions.length +
-    " right!!!"
+      numCorrect +
+      " questions out of " +
+      questions.length +
+      " right!!!"
   );
   return score;
 }
@@ -238,7 +233,7 @@ function updateTopicMetrics(topic, difficulty) {
   }
   jsonFile.topics[topic].timesAccessed.push(date);
   console.log(jsonFile);
-  localStorage.setItem("metrics", JSON.stringify(jsonFile))
+  localStorage.setItem("metrics", JSON.stringify(jsonFile));
 }
 
 function updateFormatMetrics(index) {
