@@ -116,7 +116,7 @@ function createQuestionElement(index) {
 
 // Creates a list of the answer choices as radio inputs
 function createRadios(index) {
-  var radioList = $("<ul>");
+  var radioList = $("<ul style='list-style-type: none; padding:0px;'>");
   var item;
   var input = "";
   for (var i = 0; i < questions[index].answers.length; i++) {
@@ -132,7 +132,7 @@ function createRadios(index) {
 function createVideo(index) {
   if (questions[index].video) {
     return $(
-      '<iframe class="gel-card__content question_videos" src="' +
+      '<iframe title="Youtube video" class="gel-card__content question_videos"  src="' +
         questions[index].video +
         '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     );
@@ -275,6 +275,10 @@ function updateFormatMetrics(index) {
 }
 
 function addLeaderboardEntry(name, score) {
+  if (!name) {
+    alert("Enter a name!");
+    return;
+  }
   jsonFile = localStorage.getItem(selected_topic + difficulty);
 
   if (!jsonFile) {
@@ -282,7 +286,12 @@ function addLeaderboardEntry(name, score) {
   } else {
     jsonFile = JSON.parse(jsonFile);
   }
-  jsonFile.entries.push({ name: name, score: score });
+  var item = jsonFile.entries.find((x) => x.name == name);
+  if (item) {
+    item.score = score;
+  } else {
+    jsonFile.entries.push({ name: name, score: score });
+  }
   jsonFile.entries.sort(leaderboardSort("score"));
   localStorage.setItem(selected_topic + difficulty, JSON.stringify(jsonFile));
   console.log(jsonFile);
