@@ -561,7 +561,7 @@ svg + .gel-promo__indicator-text {
 }
 
 .gel-card {
-  background-color: #F1F1F1;
+  background-color: #DAE4E5;
   outline: 2px solid transparent;
   /* for high contrast mode */
   position: relative;
@@ -631,7 +631,7 @@ svg + .gel-promo__indicator-text {
   height: 2.5rem;
   list-style: none;
   display: flex;
-  background-color: #e5e5e5;
+  background-color: #BEC8C9;
   margin-top: auto;
   border-top: 1px solid transparent;
   /* for high contrast mode */
@@ -1078,8 +1078,8 @@ input[type=range]::-ms-thumb {
 }
 
 .gel-button, .gel-cta {
-  padding: 16px;
-  color: #121212;
+  /* padding: 16px; */
+  color: #BFFCFF;
   border: 2px solid transparent;
   /* for high contrast mode */
   display: inline-block;
@@ -1093,7 +1093,7 @@ input[type=range]::-ms-thumb {
 }
 
 .gel-button {
-  background-color: #121212;
+  background-color: #BFFCFF;
   color: #fff;
 }
 
@@ -1150,13 +1150,13 @@ input[type=range]::-ms-thumb {
   margin-left: 8px;
   font-weight: bold;
   background-color: #fff;
-  color: #121212;
+  color: #4CD9E1;
   padding: 0.125rem 0.25rem;
   vertical-align: middle;
 }
 
 .gel-button:hover {
-  background-color: #404040;
+  background-color: #4CD9E1;
   border-color: #404040;
 }
 

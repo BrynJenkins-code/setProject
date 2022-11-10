@@ -2096,7 +2096,7 @@ a {
   }
 }
 .geltags-header {
-  background: #fff;
+  background: #FFFBFF;
   padding: 8px 0 3px 0;
   border-bottom: 1px solid #dcdcdc;
 }
@@ -2543,7 +2543,7 @@ a.geltags-button:hover {
 }
 /* feedback banner */
 .geltags-feedback-banner {
-  background-color: #ffdc48;
+  background-color: #BFFCFF;
   color: #404040;
   padding: 32px 0;
   font-size: 18px;
