@@ -44,6 +44,9 @@ footer{
 .question_videos{
     height: calc(50vw/16*9);
     width: 50vw;
+    max-width: 100;
+    max-height: 630px;
+    align-self: center;
 }
 
 .question_images {
@@ -51,5 +54,10 @@ footer{
     height: auto;
     max-width: 100;
     max-height: 630px;
-    flex: 1;
+    align-self: center;
+}
+
+#question{
+    display: flex;
+    flex-direction: column;
 }
