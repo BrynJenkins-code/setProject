@@ -1,16 +1,28 @@
-function loadQuestions(jsonData, topic) {
+function loadQuestions(jsonData, topic, selected_difficulty) {
+  questionObject = [];
   for (i in jsonData.quiz) {
     if (jsonData.quiz[i].topic == topic) {
-      return jsonData.quiz[i].quizquestions;
+      for (c in jsonData.quiz[i].quizquestions) {
+        if (
+          jsonData.quiz[i].quizquestions[c].difficulty == selected_difficulty
+        ) {
+          questionObject.push(jsonData.quiz[i].quizquestions[c]);
+        }
+      }
     }
   }
+  console.log(questionObject);
+  return questionObject;
 }
+
 let selected_topic = localStorage.getItem("topic");
+let difficulty = localStorage.getItem("difficulty");
+console.log(difficulty);
 var questionCounter = 0; //Tracks question number
 var currentScore = 0;
 var selections = []; //Array containing user choices
 var quiz = $("#quiz"); //Quiz div object
-questions = loadQuestions(questions, selected_topic);
+questions = loadQuestions(questions, selected_topic, difficulty);
 
 // Display initial question
 displayNext();

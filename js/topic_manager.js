@@ -13,14 +13,21 @@ let links = document.querySelectorAll(".link");
 for (let index = 0; index < links.length; index++) {
   links[index].addEventListener("click", () => {
     if (links[index].href == "http://localhost:3000/quiz.html") {
-      localStorage.clear();
       localStorage.setItem("topic", links[index].innerText);
     } else {
-      localStorage.clear();
       localStorage.setItem("topic", links[index].alt);
     }
   });
 }
+localStorage.setItem("difficulty", "Beginner");
+let difficultySwitch = document.querySelector(".difficulty");
+difficultySwitch.addEventListener("click", () => {
+  if (localStorage.getItem("difficulty") == "Beginner") {
+    localStorage.setItem("difficulty", "Expert");
+  } else {
+    localStorage.setItem("difficulty", "Beginner");
+  }
+});
 
 function createLinks(topics) {
   for (i = 0; i < topics.length; i++) {
