@@ -1079,7 +1079,7 @@ input[type=range]::-ms-thumb {
 
 .gel-button, .gel-cta {
   /* padding: 16px; */
-  color: #BFFCFF;
+  color: #F6EEFF;
   border: 2px solid transparent;
   /* for high contrast mode */
   display: inline-block;
@@ -1093,7 +1093,7 @@ input[type=range]::-ms-thumb {
 }
 
 .gel-button {
-  background-color: #BFFCFF;
+  background-color: #F6EEFF;
   color: #fff;
 }
 

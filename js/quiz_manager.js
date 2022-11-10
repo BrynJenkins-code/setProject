@@ -77,6 +77,9 @@ $("#start").on("click", function (e) {
   updateScore();
   displayNext();
   $("#start").hide();
+  document.getElementById("leaderboard").remove();
+  document.getElementById("name").remove();
+  document.getElementById("submitName").remove();
 });
 
 // Animates buttons on hover
@@ -334,6 +337,7 @@ function returnLeaderboard() {
 
   // Create table.
   const table = document.createElement("table");
+  table.id = "leaderboard";
 
   // Create table header row using the extracted headers above.
   let tr = table.insertRow(-1); // table row.

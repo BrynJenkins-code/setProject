@@ -44,7 +44,7 @@ footer{
     color: black;
 }
 .topic_label{
-    background-color:#4CD9E1;
+    background-color:#F6EEFF;
 }
 
 .question_videos{
@@ -66,4 +66,8 @@ footer{
 #question{
     display: flex;
     flex-direction: column;
+}
+
+.hidden{
+    visibility: hidden;
 }
