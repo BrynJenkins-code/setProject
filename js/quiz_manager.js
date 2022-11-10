@@ -87,7 +87,9 @@ function createQuestionElement(index) {
   var image = createImage(index);
   qElement.append(image);
 
-  var header = $("<h2>Question " + (index + 1) + ":</h2>");
+  var header = $(
+    "<h2 class='gel-card__headline'>Question " + (index + 1) + ":</h2>"
+  );
   qElement.append(header);
 
   var question = $("<p>").append(questions[index].question);
@@ -122,7 +124,7 @@ function createVideo(index) {
     //     '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     // );
     return $(
-      '<iframe src="' +
+      '<iframe class="gel-card__content" src="' +
         questions[index].video +
         '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     );
@@ -131,7 +133,7 @@ function createVideo(index) {
 function createImage(index) {
   if (questions[index].image && questions[index].altText) {
     return $(
-      '<img src="../media/questions/' +
+      '<img class="gel-card__content" src="../media/questions/' +
         questions[index].image +
         '" alt="' +
         questions[index].altText +

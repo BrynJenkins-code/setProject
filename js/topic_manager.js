@@ -46,6 +46,7 @@ function createLinks(topics) {
     a.href = "quiz.html";
     a.classList.add("link");
     a.classList.add("gel-card__headline");
+    a.tabIndex = "-1";
     a.innerText = topics[i];
     topicContainer.appendChild(a);
 
