@@ -1,6 +1,6 @@
 var questions = {
 	"quiz": [{
-			"topic": "History",
+			"topic": "history",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "William the Conqueror was victorious in the battle of Hastings",
@@ -107,7 +107,7 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "Geography",
+			"topic": "geography",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "China has highest population",
@@ -214,7 +214,7 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "Politics",
+			"topic": "politics",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "Liz Truss is the Prime Minister of the UK",
@@ -320,7 +320,7 @@ var questions = {
 				"correct_answer": 3
 			}]
 		},{
-			"topic": "Conservation",
+			"topic": "conservation",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "The United States produces the most Carbon dioxide emissions",
@@ -391,7 +391,7 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "Celebrity",
+			"topic": "celebrity",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "Daniel Radcliffe is the current James Bond actor?",
@@ -472,7 +472,7 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "Law",
+			"topic": "law",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "What is the age of criminal responsibility in England and Wales?",
@@ -535,7 +535,7 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "Sport",
+			"topic": "sport",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "The World Cup is every 6 years",
