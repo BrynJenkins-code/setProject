@@ -3,6 +3,15 @@ var questions = {
 			"topic": "history",
 			"quizquestions": [{
 				"difficulty": "Beginner",
+				"question": "Was William the Conqueror Victorious in the battle of Hastings",
+				"answers": [
+					"True",
+					"False"
+				],
+				"video":"https://www.youtube.com/embed/oIKUzaliy1c",
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
 				"question": "What event is commonly believed to have sparked World War I?",
 				"answers": [
 					"The assassination of Archduke Franz Ferdinand of Austria",
@@ -19,6 +28,8 @@ var questions = {
 					"1776",
 					"1901"
 				],
+				"image":"celebrity.jpg",
+				"altText":"The rock",
 				"correct_answer": 2
 			},{
 				"difficulty": "Beginner",
@@ -370,153 +381,153 @@ var questions = {
 					"Brad Pitt"
 				],
 				"correct_answer": 1
-			},{
-				"difficulty": "Expert",
-				"question": "Which celebrity has the most expensive house in Beverly hills?",
-				"answers": [
-					"Jeff Bezos",
-					"Tom Hanks",
-					"Kim Kardashian"
-				],
-				"correct_answer": 1
-			},{
-				"difficulty": "Expert",
-				"question": "What is the stage name of singer Reg Dwight",
-				"answers": [
-					"Elvis Presley",
-					"Elton John",
-					"Gary Barlow"
-				],
-				"correct_answer": 2
-			},{
-				"difficulty": "Expert",
-				"question": "What is the name of Gary and Phil Neville/'s father?",
-				"answers": [
-					"Greville Neville",
-					"Rebel Neville",
-					"Neville Neville"
-				],
-				"correct_answer": 3
-			
-			}]
-		},
-		{
-			"topic": "law",
-			"quizquestions": [{
-				"difficulty": "Beginner",
-				"question": "What is the age of criminal responsibility in England and Wales?",
-				"answers": [
-					"10",
-					"14",
-					"16"
-				],
-				"correct_answer": 1
-			},{
-				"difficulty": "Beginner",
-				"question": "You can make decisions on someone/'s behalf if they appoint you using a LPA, what does LPA stand for?",
-				"answers": [
-					"Law person of authority",
-					"Left pulmonary artery",
-					"Lasting power of attorney"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Beginner",
-				"question": "How many years after an author/'s death does copyright last for in the UK??",
-				"answers": [
-					"20",
-					"40",
-					"70"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Expert",
-				"question": "In which decade of the 19th-century was the last British convict transported to Australia?",
-				"answers": [
-					"1810/'s",
-					"1850/'s",
-					"1890/'s"
-				],
-				"correct_answer": 2
-			},{
-				"difficulty": "Expert",
-				"question": "As of 1313, it has been illegal to enter the Houses of Parliament wearing what?",
-				"answers": [
-					"A feather boa",
-					"A ruffled collar",
-					"A suit of armour"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Expert",
-				"question": "In which decade in Ireland were women first legally allowed to own their homes outright?",
-				"answers": [
-					"1950/'s",
-					"1970/'s",
-					"1990/'s"
-				],
-				"correct_answer": 2
-			
-			}]
-		},
-		{
-			"topic": "sport",
-			"quizquestions": [{
-				"difficulty": "Beginner",
-				"question": "Which country won the first ever football world cup?",
-				"answers": [
-					"Brazil",
-					"Germany",
-					"Uruguay"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Beginner",
-				"question": "Which Formula 1 driver has won the most races in the history of the sport?",
-				"answers": [
-					"Michael Schumacher",
-					"Ayrton Senna",
-					"Lewis Hamilton"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Beginner",
-				"question": "Which sport uses a net, a racket, and a shuttlecock?",
-				"answers": [
-					"Tennis",
-					"Badminton",
-					"Squash"
-				],
-				"correct_answer": 2
-			},{
-				"difficulty": "Expert",
-				"question": "Jurgen Klopp began his manegeral career at which German club?",
-				"answers": [
-					"Mainz 05",
-					"Borussia Dortmund",
-					"Bayern Munich"
-				],
-				"correct_answer": 1
-			},{
-				"difficulty": "Expert",
-				"question": "What colour medal did diver Tom Daley win at London 2012?",
-				"answers": [
-					"Gold",
-					"Silver",
-					"Bronze"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Expert",
-				"question": "In rugby union, who is England Men/'s all-time top try scorer?",
-				"answers": [
-					"Rory Underwood",
-					"Jonny Wilkinson",
-					"Jason Robinson"
-				],
-				"correct_answer": 1
-			
-			}]
-		}
-	]
-}
+				},{
+					"difficulty": "Expert",
+					"question": "Which celebrity has the most expensive house in Beverly hills?",
+					"answers": [
+						"Jeff Bezos",
+						"Tom Hanks",
+						"Kim Kardashian"
+					],
+					"correct_answer": 1
+				},{
+					"difficulty": "Expert",
+					"question": "What is the stage name of singer Reg Dwight",
+					"answers": [
+						"Elvis Presley",
+						"Elton John",
+						"Gary Barlow"
+					],
+					"correct_answer": 2
+				},{
+					"difficulty": "Expert",
+					"question": "What is the name of Gary and Phil Neville/'s father?",
+					"answers": [
+						"Greville Neville",
+						"Rebel Neville",
+						"Neville Neville"
+					],
+					"correct_answer": 3
+				
+				}]
+			},
+			{
+				"topic": "law",
+				"quizquestions": [{
+					"difficulty": "Beginner",
+					"question": "What is the age of criminal responsibility in England and Wales?",
+					"answers": [
+						"10",
+						"14",
+						"16"
+					],
+					"correct_answer": 1
+				},{
+					"difficulty": "Beginner",
+					"question": "You can make decisions on someone/'s behalf if they appoint you using a LPA, what does LPA stand for?",
+					"answers": [
+						"Law person of authority",
+						"Left pulmonary artery",
+						"Lasting power of attorney"
+					],
+					"correct_answer": 3
+				},{
+					"difficulty": "Beginner",
+					"question": "How many years after an author/'s death does copyright last for in the UK??",
+					"answers": [
+						"20",
+						"40",
+						"70"
+					],
+					"correct_answer": 3
+				},{
+					"difficulty": "Expert",
+					"question": "In which decade of the 19th-century was the last British convict transported to Australia?",
+					"answers": [
+						"1810/'s",
+						"1850/'s",
+						"1890/'s"
+					],
+					"correct_answer": 2
+				},{
+					"difficulty": "Expert",
+					"question": "As of 1313, it has been illegal to enter the Houses of Parliament wearing what?",
+					"answers": [
+						"A feather boa",
+						"A ruffled collar",
+						"A suit of armour"
+					],
+					"correct_answer": 3
+				},{
+					"difficulty": "Expert",
+					"question": "In which decade in Ireland were women first legally allowed to own their homes outright?",
+					"answers": [
+						"1950/'s",
+						"1970/'s",
+						"1990/'s"
+					],
+					"correct_answer": 2
+				
+				}]
+			},
+			{
+				"topic": "sport",
+				"quizquestions": [{
+					"difficulty": "Beginner",
+					"question": "Which country won the first ever football world cup?",
+					"answers": [
+						"Brazil",
+						"Germany",
+						"Uruguay"
+					],
+					"correct_answer": 3
+				},{
+					"difficulty": "Beginner",
+					"question": "Which Formula 1 driver has won the most races in the history of the sport?",
+					"answers": [
+						"Michael Schumacher",
+						"Ayrton Senna",
+						"Lewis Hamilton"
+					],
+					"correct_answer": 3
+				},{
+					"difficulty": "Beginner",
+					"question": "Which sport uses a net, a racket, and a shuttlecock?",
+					"answers": [
+						"Tennis",
+						"Badminton",
+						"Squash"
+					],
+					"correct_answer": 2
+				},{
+					"difficulty": "Expert",
+					"question": "Jurgen Klopp began his manegeral career at which German club?",
+					"answers": [
+						"Mainz 05",
+						"Borussia Dortmund",
+						"Bayern Munich"
+					],
+					"correct_answer": 1
+				},{
+					"difficulty": "Expert",
+					"question": "What colour medal did diver Tom Daley win at London 2012?",
+					"answers": [
+						"Gold",
+						"Silver",
+						"Bronze"
+					],
+					"correct_answer": 3
+				},{
+					"difficulty": "Expert",
+					"question": "In rugby union, who is England Men/'s all-time top try scorer?",
+					"answers": [
+						"Rory Underwood",
+						"Jonny Wilkinson",
+						"Jason Robinson"
+					],
+					"correct_answer": 1
+				
+				}]
+			}
+		]
+	}
