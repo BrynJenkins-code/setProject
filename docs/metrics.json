@@ -41,7 +41,14 @@ var metrics = {
             "beginnerClicks": 0,
             "expertClicks": 0,
             "timesAccessed": []
-        }
+        },
+        "live":{
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        },
+
     },
     "formats": {
         "video": 0,
