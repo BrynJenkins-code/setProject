@@ -1,3 +1,6 @@
+//const fs = requirejs('fs');
+//import * as fs from 'fs';
+
 function loadQuestions(jsonData, topic) {
   for (i in jsonData.quiz) {
     if (jsonData.quiz[i].topic == topic) {
@@ -11,6 +14,7 @@ var currentScore = 0;
 var selections = []; //Array containing user choices
 var quiz = $("#quiz"); //Quiz div object
 questions = loadQuestions(questions, selected_topic);
+updateTopicMetrics(selected_topic);
 
 // Display initial question
 displayNext();
@@ -123,8 +127,8 @@ function createVideo(index) {
     // );
     return $(
       '<iframe src="' +
-        questions[index].video +
-        '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
+      questions[index].video +
+      '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     );
   }
 }
@@ -132,10 +136,10 @@ function createImage(index) {
   if (questions[index].image && questions[index].altText) {
     return $(
       '<img src="../media/questions/' +
-        questions[index].image +
-        '" alt="' +
-        questions[index].altText +
-        '">'
+      questions[index].image +
+      '" alt="' +
+      questions[index].altText +
+      '">'
     );
   }
 }
@@ -195,10 +199,29 @@ function displayScore() {
 
   score.append(
     "You got " +
-      numCorrect +
-      " questions out of " +
-      questions.length +
-      " right!!!"
+    numCorrect +
+    " questions out of " +
+    questions.length +
+    " right!!!"
   );
   return score;
+}
+
+function updateTopicMetrics(topic) {
+  jsonFile = localStorage.getItem("metrics");
+  console.log(jsonFile);
+  var content;
+  if (!jsonFile) {
+    jsonFile = metrics;
+  } else {
+    jsonFile = JSON.parse(jsonFile);
+  }
+  console.log(jsonFile);
+
+  var currentDate = new Date();
+  let date = currentDate.toGMTString();
+  jsonFile.topics[topic].noOfClicks = +jsonFile.topics[topic].noOfClicks++;
+  jsonFile.topics[topic].timesAccessed.push(date);
+  console.log(jsonFile);
+  localStorage.setItem("metrics", JSON.stringify(jsonFile))
 }
