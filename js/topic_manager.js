@@ -13,14 +13,23 @@ let links = document.querySelectorAll(".link");
 for (let index = 0; index < links.length; index++) {
   links[index].addEventListener("click", () => {
     if (links[index].href == "http://localhost:3000/quiz.html") {
-      localStorage.clear();
       localStorage.setItem("topic", links[index].innerText);
     } else {
-      localStorage.clear();
       localStorage.setItem("topic", links[index].alt);
     }
   });
 }
+localStorage.setItem("difficulty", "Beginner");
+let difficultySwitch = document.querySelector(".difficulty");
+difficultySwitch.addEventListener("click", () => {
+  if (localStorage.getItem("difficulty") == "Beginner") {
+    localStorage.setItem("difficulty", "Expert");
+    difficultySwitch.innerText = "Difficulty: Expert";
+  } else {
+    localStorage.setItem("difficulty", "Beginner");
+    difficultySwitch.innerText = "Difficulty: Beginner";
+  }
+});
 
 function createLinks(topics) {
   for (i = 0; i < topics.length; i++) {
@@ -46,6 +55,8 @@ function createLinks(topics) {
     a.href = "quiz.html";
     a.classList.add("link");
     a.classList.add("gel-card__headline");
+    a.classList.add("topic_label");
+    a.tabIndex = "-1";
     a.innerText = topics[i];
     topicContainer.appendChild(a);
 

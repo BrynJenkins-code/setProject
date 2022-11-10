@@ -3,13 +3,21 @@ var questions = {
 			"topic": "history",
 			"quizquestions": [{
 				"difficulty": "Beginner",
+				"question": "Was William the Conqueror Victorious in the battle of Hastings",
+				"answers": [
+					"True",
+					"False"
+				],
+				"video":"https://www.youtube.com/embed/oIKUzaliy1c",
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",				
 				"question": "What event is commonly believed to have sparked World War I?",
 				"answers": [
 					"The assassination of Archduke Franz Ferdinand of Austria",
 					"The release of the single \"Take me out\" by Franz Ferdinand",
 					"Rio Ferdinand transferring from Leeds United to Manchester United in 2002"
 				],
-				"video":"https://www.youtube.com/embed/1fe_1MpmReE",
 				"correct_answer": 1
 			},{
 				"difficulty": "Beginner",
@@ -19,6 +27,8 @@ var questions = {
 					"1776",
 					"1901"
 				],
+				"image":"declaration.jpeg",
+				"altText":"Decleration of Independence",
 				"correct_answer": 2
 			},{
 				"difficulty": "Beginner",
@@ -55,7 +65,9 @@ var questions = {
 					"Julius",
 					"Nero"
 				],
-				"correct_answer": 1
+				"correct_answer": 1,
+				"image":"vespasian.jpeg",
+				"altText":"Vespasian"
 			},{
 				"difficulty": "Expert",
 				"question": "What was the name of the ancient trade route that connected the East with the West?",
@@ -104,6 +116,8 @@ var questions = {
 					"Cardiff",
 					"Birmingham"
 				],
+				"image":"city.jpeg",
+				"altText":"City",
 				"correct_answer": 3
 			},{
 				"difficulty": "Beginner",
@@ -149,6 +163,8 @@ var questions = {
 					"Diddyshire",
 					"Theshire"
 				],
+				"image":"shire.webp",
+				"altText":"The Shire from Lord of the Rings",
 				"correct_answer": 2
 			},{
 				"difficulty": "Expert",
@@ -198,6 +214,8 @@ var questions = {
 					"Theodore Roosevelt",
 					"Barack Obama"
 				],
+				"image":"teddy.jpeg",
+				"altText":"Teddy Bear",
 				"correct_answer": 2
 			},{
 				"difficulty": "Beginner",
@@ -237,12 +255,14 @@ var questions = {
 				"correct_answer": 1
 			},{
 				"difficulty": "Expert",
-				"question": "What is Boris Johnson/'s full name?",
+				"question": "What is Boris Johnson\'s full name?",
 				"answers": [
 					"Borisus Johnsonus",
 					"George Boris Van de Sar Johnson",
 					"Alexander Boris de Pfeffel Johnson"
 				],
+				"image":"Boris_johnson.jpeg",
+				"altText":"Boris Johnson",
 				"correct_answer": 3
 			},{
 				"difficulty": "Expert",
@@ -273,7 +293,7 @@ var questions = {
 				"correct_answer": 2
 			},{
 				"difficulty": "Expert",
-				"question": "What does the /'S/' in /'Harry S Truman/' stand for?",
+				"question": "What does the \'S\' in \'Harry S Truman\' stand for?",
 				"answers": [
 					"Spencer",
 					"Stanley",
@@ -291,6 +311,8 @@ var questions = {
 					"Killer Whale",
 					"Peregrine Falcon"
 				],
+				"image":"cheetah.jpeg",
+				"altText":"Cheetah",
 				"correct_answer": 3
 			},{
 				"difficulty": "Beginner",
@@ -318,6 +340,8 @@ var questions = {
 					"Ivory Coast",
 					"China"
 				],
+				"image":"alligator.jpeg",
+				"altText":"Alligator",
 				"correct_answer": 3
 			},{
 				"difficulty": "Expert",
@@ -343,14 +367,23 @@ var questions = {
 			"topic": "celebrity",
 			"quizquestions": [{
 				"difficulty": "Beginner",
-				"question": "Which one of the following is NOT the name of one of Kim Kardashian/'s kids?",
+				"question": "Who did I dress up as for halloween?",
+				"answers": [
+					"Christina Aguilera",
+					"Britney Spears",
+					"Liz Truss"
+				],
+				"image":"outfit.jpg",
+				"altText":"Hot stuff",
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "Which one of the following is NOT the name of one of Kim Kardashian\'s kids?",
 				"answers": [
 					"South",
 					"North",
 					"Chicago"
 				],
-				"image":"celebrity.jpg",
-				"altText":"The Rock",
 				"correct_answer": 1
 			},{
 				"difficulty": "Beginner",
@@ -378,6 +411,8 @@ var questions = {
 					"Tom Hanks",
 					"Kim Kardashian"
 				],
+				"image":"mansion.jpeg",
+				"altText":"Mansion",
 				"correct_answer": 1
 			},{
 				"difficulty": "Expert",
@@ -390,7 +425,7 @@ var questions = {
 				"correct_answer": 2
 			},{
 				"difficulty": "Expert",
-				"question": "What is the name of Gary and Phil Neville/'s father?",
+				"question": "What is the name of Gary and Phil Neville\'s father?",
 				"answers": [
 					"Greville Neville",
 					"Rebel Neville",
@@ -410,6 +445,8 @@ var questions = {
 					"14",
 					"16"
 				],
+				"image":"crying.webp",
+				"altText":"Child crying",
 				"correct_answer": 1
 			},{
 				"difficulty": "Beginner",
@@ -422,7 +459,7 @@ var questions = {
 				"correct_answer": 3
 			},{
 				"difficulty": "Beginner",
-				"question": "How many years after an author/'s death does copyright last for in the UK??",
+				"question": "How many years after an author\'s death does copyright last for in the UK??",
 				"answers": [
 					"20",
 					"40",
@@ -437,6 +474,8 @@ var questions = {
 					"1850/'s",
 					"1890/'s"
 				],
+				"image":"australia.jpeg",
+				"altText":"Australia",
 				"correct_answer": 2
 			},{
 				"difficulty": "Expert",
@@ -469,6 +508,8 @@ var questions = {
 					"Germany",
 					"Uruguay"
 				],
+				"image":"world_cup.jpeg",
+				"altText":"World Cup",
 				"correct_answer": 3
 			},{
 				"difficulty": "Beginner",
@@ -496,6 +537,8 @@ var questions = {
 					"Borussia Dortmund",
 					"Bayern Munich"
 				],
+				"image":"klopp.jpeg",
+				"altText":"Jurgen Klopp",
 				"correct_answer": 1
 			},{
 				"difficulty": "Expert",
@@ -508,7 +551,7 @@ var questions = {
 				"correct_answer": 3
 			},{
 				"difficulty": "Expert",
-				"question": "In rugby union, who is England Men/'s all-time top try scorer?",
+				"question": "In rugby union, who is England Men\'s all-time top try scorer?",
 				"answers": [
 					"Rory Underwood",
 					"Jonny Wilkinson",

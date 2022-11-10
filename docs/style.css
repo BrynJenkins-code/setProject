@@ -28,9 +28,15 @@
 .header{
     min-height: 150px;
 }
-.footer{
+footer{
     min-height:182px;
 }
 .main{
     flex: 1;
+}
+.difficulty{
+    margin: 20px;
+}
+.topic_label{
+    background-color:#4CD9E1;
 }

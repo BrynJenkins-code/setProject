@@ -1,20 +1,28 @@
-//const fs = requirejs('fs');
-//import * as fs from 'fs';
-
-function loadQuestions(jsonData, topic) {
+function loadQuestions(jsonData, topic, selected_difficulty) {
+  questionObject = [];
   for (i in jsonData.quiz) {
     if (jsonData.quiz[i].topic == topic) {
-      return jsonData.quiz[i].quizquestions;
+      for (c in jsonData.quiz[i].quizquestions) {
+        if (
+          jsonData.quiz[i].quizquestions[c].difficulty == selected_difficulty
+        ) {
+          questionObject.push(jsonData.quiz[i].quizquestions[c]);
+        }
+      }
     }
   }
+  console.log(questionObject);
+  return questionObject;
 }
+
 let selected_topic = localStorage.getItem("topic");
+let difficulty = localStorage.getItem("difficulty");
+console.log(difficulty);
 var questionCounter = 0; //Tracks question number
 var currentScore = 0;
 var selections = []; //Array containing user choices
 var quiz = $("#quiz"); //Quiz div object
-questions = loadQuestions(questions, selected_topic);
-updateTopicMetrics(selected_topic);
+questions = loadQuestions(questions, selected_topic, difficulty);
 
 // Display initial question
 displayNext();
@@ -91,7 +99,9 @@ function createQuestionElement(index) {
   var image = createImage(index);
   qElement.append(image);
 
-  var header = $("<h2>Question " + (index + 1) + ":</h2>");
+  var header = $(
+    "<h2 class='gel-card__headline'>Question " + (index + 1) + ":</h2>"
+  );
   qElement.append(header);
 
   var question = $("<p>").append(questions[index].question);
@@ -126,7 +136,7 @@ function createVideo(index) {
     //     '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     // );
     return $(
-      '<iframe src="' +
+      '<iframe class="gel-card__content" src="' +
       questions[index].video +
       '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     );
@@ -135,7 +145,7 @@ function createVideo(index) {
 function createImage(index) {
   if (questions[index].image && questions[index].altText) {
     return $(
-      '<img src="../media/questions/' +
+      '<img class="gel-card__content" src="../media/questions/' +
       questions[index].image +
       '" alt="' +
       questions[index].altText +
