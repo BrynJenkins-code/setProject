@@ -617,65 +617,6 @@ var questions = {
 				],
 				"video":"https://www.youtube.com/embed/S2hqfICSY7o",
 				"correct_answer": 2
-			},{
-				"difficulty": "Beginner",
-				"question": "Which country won the first ever football world cup?",
-				"answers": [
-					"Brazil",
-					"Germany",
-					"Uruguay"
-				],
-				"image":"world_cup.jpeg",
-				"altText":"World Cup",
-				"correct_answer": 3
-			},{
-				"difficulty": "Beginner",
-				"question": "Which Formula 1 driver has won the most races in the history of the sport?",
-				"answers": [
-					"Michael Schumacher",
-					"Ayrton Senna",
-					"Lewis Hamilton"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Beginner",
-				"question": "Which sport uses a net, a racket, and a shuttlecock?",
-				"answers": [
-					"Tennis",
-					"Badminton",
-					"Squash"
-				],
-				"correct_answer": 2
-			},{
-				"difficulty": "Expert",
-				"question": "Jurgen Klopp began his manegeral career at which German club?",
-				"answers": [
-					"Mainz 05",
-					"Borussia Dortmund",
-					"Bayern Munich"
-				],
-				"image":"klopp.jpeg",
-				"altText":"Jurgen Klopp",
-				"correct_answer": 1
-			},{
-				"difficulty": "Expert",
-				"question": "What colour medal did diver Tom Daley win at London 2012?",
-				"answers": [
-					"Gold",
-					"Silver",
-					"Bronze"
-				],
-				"correct_answer": 3
-			},{
-				"difficulty": "Expert",
-				"question": "In rugby union, who is England Men\'s all-time top try scorer?",
-				"answers": [
-					"Rory Underwood",
-					"Jonny Wilkinson",
-					"Jason Robinson"
-				],
-				"correct_answer": 1
-			
 			}]
 		}
 	]

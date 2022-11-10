@@ -194,14 +194,28 @@ function updateScore() {
 
 // Computes score and returns a paragraph element to be displayed
 function displayScore() {
-  var score = $("<p>", { id: "question" });
-
   var numCorrect = 0;
   for (var i = 0; i < selections.length; i++) {
     if (selections[i] + 1 === questions[i].correct_answer) {
       numCorrect++;
     }
   }
+
+  var score = $("<p>", { id: "question" });
+  var name = $("<input>", { type: "text", id: "name" });
+  var name = document.createElement("input");
+  name.type = "text";
+  name.id = "name";
+  var submitName = document.createElement("button");
+  submitName.id = "submitName";
+  submitName.innerText = "submit";
+  submitName.addEventListener("click", () => {
+    console.log(score);
+    addLeaderboardEntry(name.value, numCorrect);
+  });
+
+  document.querySelector("#container").appendChild(name);
+  document.querySelector("#container").appendChild(submitName);
 
   score.append(
     "You got " +
@@ -253,21 +267,21 @@ function updateFormatMetrics(index) {
   }
 
   console.log(jsonFile);
-  localStorage.setItem("metrics", JSON.stringify(jsonFile))
+  localStorage.setItem("metrics", JSON.stringify(jsonFile));
 }
 
 function addLeaderboardEntry(name, score) {
-  jsonFile = localStorage.getItem("leaderboard");
+  jsonFile = localStorage.getItem(selected_topic + difficulty);
 
   if (!jsonFile) {
     jsonFile = leaderboard;
   } else {
     jsonFile = JSON.parse(jsonFile);
   }
-  jsonFile.leaderboard.entries.push({ name: name, score: score });
-  jsonFile.leaderboard.entries.sort(leaderboardSort("score"));
-  localStorage.setItem("leaderboard", JSON.stringify(jsonFile))
-
+  jsonFile.entries.push({ name: name, score: score });
+  jsonFile.entries.sort(leaderboardSort("score"));
+  localStorage.setItem(selected_topic + difficulty, JSON.stringify(jsonFile));
+  console.log(jsonFile);
 }
 
 function leaderboardSort(prop) {
@@ -278,6 +292,5 @@ function leaderboardSort(prop) {
       return -1;
     }
     return 0;
-  }
+  };
 }
-
