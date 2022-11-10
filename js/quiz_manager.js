@@ -110,7 +110,7 @@ function createQuestionElement(index) {
 
   var radioButtons = createRadios(index);
   qElement.append(radioButtons);
-
+  updateFormatMetrics(index);
   return qElement;
 }
 
@@ -236,8 +236,28 @@ function updateTopicMetrics(topic, difficulty) {
   } else {
     jsonFile.topics[topic].expertClicks++;
   }
-
   jsonFile.topics[topic].timesAccessed.push(date);
   console.log(jsonFile);
   localStorage.setItem("metrics", JSON.stringify(jsonFile))
 }
+
+function updateFormatMetrics(index) {
+  jsonFile = localStorage.getItem("metrics");
+
+  if (!jsonFile) {
+    jsonFile = metrics;
+  } else {
+    jsonFile = JSON.parse(jsonFile);
+  }
+  if (questions[index].video) {
+    jsonFile.formats.video++;
+  } else if (questions[index].image) {
+    jsonFile.formats.image++;
+  } else {
+    jsonFile.formats.multi_choice++;
+  }
+
+  console.log(jsonFile);
+  localStorage.setItem("metrics", JSON.stringify(jsonFile))
+}
+

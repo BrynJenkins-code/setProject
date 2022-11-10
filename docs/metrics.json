@@ -45,7 +45,7 @@ var metrics = {
     },
     "formats": {
         "video": 0,
-        "multi-choice": 0,
+        "multi_choice": 0,
         "image": 0
     }
 }
