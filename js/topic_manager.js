@@ -24,8 +24,10 @@ let difficultySwitch = document.querySelector(".difficulty");
 difficultySwitch.addEventListener("click", () => {
   if (localStorage.getItem("difficulty") == "Beginner") {
     localStorage.setItem("difficulty", "Expert");
+    difficultySwitch.innerText = "Difficulty: Expert";
   } else {
     localStorage.setItem("difficulty", "Beginner");
+    difficultySwitch.innerText = "Difficulty: Beginner";
   }
 });
 
@@ -53,6 +55,7 @@ function createLinks(topics) {
     a.href = "quiz.html";
     a.classList.add("link");
     a.classList.add("gel-card__headline");
+    a.classList.add("topic_label");
     a.tabIndex = "-1";
     a.innerText = topics[i];
     topicContainer.appendChild(a);

@@ -11,14 +11,13 @@ var questions = {
 				"video":"https://www.youtube.com/embed/oIKUzaliy1c",
 				"correct_answer": 1
 			},{
-				"difficulty": "Beginner",
+				"difficulty": "Beginner",				
 				"question": "What event is commonly believed to have sparked World War I?",
 				"answers": [
 					"The assassination of Archduke Franz Ferdinand of Austria",
 					"The release of the single \"Take me out\" by Franz Ferdinand",
 					"Rio Ferdinand transferring from Leeds United to Manchester United in 2002"
 				],
-				"video":"https://www.youtube.com/embed/1fe_1MpmReE",
 				"correct_answer": 1
 			},{
 				"difficulty": "Beginner",
@@ -28,8 +27,8 @@ var questions = {
 					"1776",
 					"1901"
 				],
-				"image":"celebrity.jpg",
-				"altText":"The rock",
+				"image":"declaration.jpeg",
+				"altText":"Decleration of Independence",
 				"correct_answer": 2
 			},{
 				"difficulty": "Beginner",
@@ -66,7 +65,9 @@ var questions = {
 					"Julius",
 					"Nero"
 				],
-				"correct_answer": 1
+				"correct_answer": 1,
+				"image":"vespasian.jpeg",
+				"altText":"Vespasian"
 			},{
 				"difficulty": "Expert",
 				"question": "What was the name of the ancient trade route that connected the East with the West?",
@@ -115,6 +116,8 @@ var questions = {
 					"Cardiff",
 					"Birmingham"
 				],
+				"image":"city.jpeg",
+				"altText":"City",
 				"correct_answer": 3
 			},{
 				"difficulty": "Beginner",
@@ -160,6 +163,8 @@ var questions = {
 					"Diddyshire",
 					"Theshire"
 				],
+				"image":"shire.webp",
+				"altText":"The Shire from Lord of the Rings",
 				"correct_answer": 2
 			},{
 				"difficulty": "Expert",
@@ -209,6 +214,8 @@ var questions = {
 					"Theodore Roosevelt",
 					"Barack Obama"
 				],
+				"image":"teddy.jpeg",
+				"altText":"Teddy Bear",
 				"correct_answer": 2
 			},{
 				"difficulty": "Beginner",
@@ -248,12 +255,14 @@ var questions = {
 				"correct_answer": 1
 			},{
 				"difficulty": "Expert",
-				"question": "What is Boris Johnson/'s full name?",
+				"question": "What is Boris Johnson\'s full name?",
 				"answers": [
 					"Borisus Johnsonus",
 					"George Boris Van de Sar Johnson",
 					"Alexander Boris de Pfeffel Johnson"
 				],
+				"image":"Boris_johnson.jpeg",
+				"altText":"Boris Johnson",
 				"correct_answer": 3
 			},{
 				"difficulty": "Expert",
@@ -284,7 +293,7 @@ var questions = {
 				"correct_answer": 2
 			},{
 				"difficulty": "Expert",
-				"question": "What does the /'S/' in /'Harry S Truman/' stand for?",
+				"question": "What does the \'S\' in \'Harry S Truman\' stand for?",
 				"answers": [
 					"Spencer",
 					"Stanley",
@@ -302,6 +311,8 @@ var questions = {
 					"Killer Whale",
 					"Peregrine Falcon"
 				],
+				"image":"cheetah.jpeg",
+				"altText":"Cheetah",
 				"correct_answer": 3
 			},{
 				"difficulty": "Beginner",
@@ -329,6 +340,8 @@ var questions = {
 					"Ivory Coast",
 					"China"
 				],
+				"image":"alligator.jpeg",
+				"altText":"Alligator",
 				"correct_answer": 3
 			},{
 				"difficulty": "Expert",
@@ -354,14 +367,23 @@ var questions = {
 			"topic": "celebrity",
 			"quizquestions": [{
 				"difficulty": "Beginner",
-				"question": "Which one of the following is NOT the name of one of Kim Kardashian/'s kids?",
+				"question": "Who did I dress up as for halloween?",
+				"answers": [
+					"Christina Aguilera",
+					"Britney Spears",
+					"Liz Truss"
+				],
+				"image":"outfit.jpg",
+				"altText":"Hot stuff",
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "Which one of the following is NOT the name of one of Kim Kardashian\'s kids?",
 				"answers": [
 					"South",
 					"North",
 					"Chicago"
 				],
-				"image":"celebrity.jpg",
-				"altText":"The Rock",
 				"correct_answer": 1
 			},{
 				"difficulty": "Beginner",
@@ -381,153 +403,163 @@ var questions = {
 					"Brad Pitt"
 				],
 				"correct_answer": 1
-				},{
-					"difficulty": "Expert",
-					"question": "Which celebrity has the most expensive house in Beverly hills?",
-					"answers": [
-						"Jeff Bezos",
-						"Tom Hanks",
-						"Kim Kardashian"
-					],
-					"correct_answer": 1
-				},{
-					"difficulty": "Expert",
-					"question": "What is the stage name of singer Reg Dwight",
-					"answers": [
-						"Elvis Presley",
-						"Elton John",
-						"Gary Barlow"
-					],
-					"correct_answer": 2
-				},{
-					"difficulty": "Expert",
-					"question": "What is the name of Gary and Phil Neville/'s father?",
-					"answers": [
-						"Greville Neville",
-						"Rebel Neville",
-						"Neville Neville"
-					],
-					"correct_answer": 3
-				
-				}]
-			},
-			{
-				"topic": "law",
-				"quizquestions": [{
-					"difficulty": "Beginner",
-					"question": "What is the age of criminal responsibility in England and Wales?",
-					"answers": [
-						"10",
-						"14",
-						"16"
-					],
-					"correct_answer": 1
-				},{
-					"difficulty": "Beginner",
-					"question": "You can make decisions on someone/'s behalf if they appoint you using a LPA, what does LPA stand for?",
-					"answers": [
-						"Law person of authority",
-						"Left pulmonary artery",
-						"Lasting power of attorney"
-					],
-					"correct_answer": 3
-				},{
-					"difficulty": "Beginner",
-					"question": "How many years after an author/'s death does copyright last for in the UK??",
-					"answers": [
-						"20",
-						"40",
-						"70"
-					],
-					"correct_answer": 3
-				},{
-					"difficulty": "Expert",
-					"question": "In which decade of the 19th-century was the last British convict transported to Australia?",
-					"answers": [
-						"1810/'s",
-						"1850/'s",
-						"1890/'s"
-					],
-					"correct_answer": 2
-				},{
-					"difficulty": "Expert",
-					"question": "As of 1313, it has been illegal to enter the Houses of Parliament wearing what?",
-					"answers": [
-						"A feather boa",
-						"A ruffled collar",
-						"A suit of armour"
-					],
-					"correct_answer": 3
-				},{
-					"difficulty": "Expert",
-					"question": "In which decade in Ireland were women first legally allowed to own their homes outright?",
-					"answers": [
-						"1950/'s",
-						"1970/'s",
-						"1990/'s"
-					],
-					"correct_answer": 2
-				
-				}]
-			},
-			{
-				"topic": "sport",
-				"quizquestions": [{
-					"difficulty": "Beginner",
-					"question": "Which country won the first ever football world cup?",
-					"answers": [
-						"Brazil",
-						"Germany",
-						"Uruguay"
-					],
-					"correct_answer": 3
-				},{
-					"difficulty": "Beginner",
-					"question": "Which Formula 1 driver has won the most races in the history of the sport?",
-					"answers": [
-						"Michael Schumacher",
-						"Ayrton Senna",
-						"Lewis Hamilton"
-					],
-					"correct_answer": 3
-				},{
-					"difficulty": "Beginner",
-					"question": "Which sport uses a net, a racket, and a shuttlecock?",
-					"answers": [
-						"Tennis",
-						"Badminton",
-						"Squash"
-					],
-					"correct_answer": 2
-				},{
-					"difficulty": "Expert",
-					"question": "Jurgen Klopp began his manegeral career at which German club?",
-					"answers": [
-						"Mainz 05",
-						"Borussia Dortmund",
-						"Bayern Munich"
-					],
-					"correct_answer": 1
-				},{
-					"difficulty": "Expert",
-					"question": "What colour medal did diver Tom Daley win at London 2012?",
-					"answers": [
-						"Gold",
-						"Silver",
-						"Bronze"
-					],
-					"correct_answer": 3
-				},{
-					"difficulty": "Expert",
-					"question": "In rugby union, who is England Men/'s all-time top try scorer?",
-					"answers": [
-						"Rory Underwood",
-						"Jonny Wilkinson",
-						"Jason Robinson"
-					],
-					"correct_answer": 1
-				
-				}]
-			}
-		]
-	}
+			},{
+				"difficulty": "Expert",
+				"question": "Which celebrity has the most expensive house in Beverly hills?",
+				"answers": [
+					"Jeff Bezos",
+					"Tom Hanks",
+					"Kim Kardashian"
+				],
+				"image":"mansion.jpeg",
+				"altText":"Mansion",
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "What is the stage name of singer Reg Dwight",
+				"answers": [
+					"Elvis Presley",
+					"Elton John",
+					"Gary Barlow"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "What is the name of Gary and Phil Neville\'s father?",
+				"answers": [
+					"Greville Neville",
+					"Rebel Neville",
+					"Neville Neville"
+				],
+				"correct_answer": 3
+			
+			}]
+		},
+		{
+			"topic": "law",
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "What is the age of criminal responsibility in England and Wales?",
+				"answers": [
+					"10",
+					"14",
+					"16"
+				],
+				"image":"crying.webp",
+				"altText":"Child crying",
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "You can make decisions on someone/'s behalf if they appoint you using a LPA, what does LPA stand for?",
+				"answers": [
+					"Law person of authority",
+					"Left pulmonary artery",
+					"Lasting power of attorney"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "How many years after an author\'s death does copyright last for in the UK??",
+				"answers": [
+					"20",
+					"40",
+					"70"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "In which decade of the 19th-century was the last British convict transported to Australia?",
+				"answers": [
+					"1810/'s",
+					"1850/'s",
+					"1890/'s"
+				],
+				"image":"australia.jpeg",
+				"altText":"Australia",
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "As of 1313, it has been illegal to enter the Houses of Parliament wearing what?",
+				"answers": [
+					"A feather boa",
+					"A ruffled collar",
+					"A suit of armour"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "In which decade in Ireland were women first legally allowed to own their homes outright?",
+				"answers": [
+					"1950/'s",
+					"1970/'s",
+					"1990/'s"
+				],
+				"correct_answer": 2
+			
+			}]
+		},
+		{
+			"topic": "sport",
+			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "Which country won the first ever football world cup?",
+				"answers": [
+					"Brazil",
+					"Germany",
+					"Uruguay"
+				],
+				"image":"world_cup.jpeg",
+				"altText":"World Cup",
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "Which Formula 1 driver has won the most races in the history of the sport?",
+				"answers": [
+					"Michael Schumacher",
+					"Ayrton Senna",
+					"Lewis Hamilton"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Beginner",
+				"question": "Which sport uses a net, a racket, and a shuttlecock?",
+				"answers": [
+					"Tennis",
+					"Badminton",
+					"Squash"
+				],
+				"correct_answer": 2
+			},{
+				"difficulty": "Expert",
+				"question": "Jurgen Klopp began his manegeral career at which German club?",
+				"answers": [
+					"Mainz 05",
+					"Borussia Dortmund",
+					"Bayern Munich"
+				],
+				"image":"klopp.jpeg",
+				"altText":"Jurgen Klopp",
+				"correct_answer": 1
+			},{
+				"difficulty": "Expert",
+				"question": "What colour medal did diver Tom Daley win at London 2012?",
+				"answers": [
+					"Gold",
+					"Silver",
+					"Bronze"
+				],
+				"correct_answer": 3
+			},{
+				"difficulty": "Expert",
+				"question": "In rugby union, who is England Men\'s all-time top try scorer?",
+				"answers": [
+					"Rory Underwood",
+					"Jonny Wilkinson",
+					"Jason Robinson"
+				],
+				"correct_answer": 1
+			
+			}]
+		}
+	]
+}
