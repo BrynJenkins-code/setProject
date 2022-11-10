@@ -116,8 +116,13 @@ function createRadios(index) {
 
 function createVideo(index) {
   if (questions[index].video) {
+    // return $(
+    //   '<iframe width="1212" height="682" src="' +
+    //     questions[index].video +
+    //     '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
+    // );
     return $(
-      '<iframe width="1212" height="682" src="' +
+      '<iframe src="' +
         questions[index].video +
         '"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'
     );

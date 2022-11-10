@@ -1,13 +1,36 @@
 .topicimages{
-    height: 100px;
-    width: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    width: 200px;
+    height: 200px;
 }
 #topiclinks{
     display: flex;
-    justify-content: space-between;
     flex-flow: wrap;
 }
 .topicContainers{
     display: flex;
     flex-direction: column;
+    margin: 20px;
+}
+
+#container{
+    padding: 50px;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.header{
+    min-height: 150px;
+}
+.footer{
+    min-height:182px;
+}
+.main{
+    flex: 1;
 }

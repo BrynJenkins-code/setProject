@@ -567,12 +567,17 @@ svg + .gel-promo__indicator-text {
   position: relative;
   display: flex;
   flex-direction: column;
+
+  margin: 20px;
 }
 
 .gel-card__content {
   position: relative;
   overflow: hidden;
-  height: 10rem;
+  min-width: 100px;
+  min-height: 100px;
+  width: 250px;
+  height: auto;
   order: -1;
 }
 
@@ -582,7 +587,7 @@ svg + .gel-promo__indicator-text {
 }
 
 .gel-cards > * {
-  flex: 0 0 266px;
+  flex: 0 0 250px;
   margin: 0 1rem 1rem 0;
 }
 

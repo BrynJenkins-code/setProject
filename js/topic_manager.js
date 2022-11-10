@@ -24,10 +24,12 @@ for (let index = 0; index < links.length; index++) {
 
 function createLinks(topics) {
   for (i = 0; i < topics.length; i++) {
-    let topicContainer = document.createElement("div");
+    let topicContainer = document.createElement("li");
     topicContainer.classList.add("topicContainers");
+    topicContainer.classList.add('class="gel-card"');
 
     let imageAnchor = document.createElement("a");
+    imageAnchor.classList.add("gel-card__content");
     imageAnchor.href = "quiz.html";
 
     let topicImage = document.createElement("img");
@@ -43,6 +45,7 @@ function createLinks(topics) {
     a.title = topics[i];
     a.href = "quiz.html";
     a.classList.add("link");
+    a.classList.add("gel-card__headline");
     a.innerText = topics[i];
     topicContainer.appendChild(a);
 
