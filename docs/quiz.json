@@ -1,9 +1,9 @@
 var questions = {
 	"quiz": [{
-			"topic": "history",
+			"topic": "History",
 			"quizquestions": [{
 				"difficulty": "Beginner",
-				"question": "Was William the Conqueror Victorious in the battle of Hastings",
+				"question": "William the Conqueror was victorious in the battle of Hastings",
 				"answers": [
 					"True",
 					"False"
@@ -107,8 +107,17 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "geography",
+			"topic": "Geography",
 			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "China has highest population",
+				"answers": [
+					"True",
+					"False"
+				],
+				"video":"https://www.youtube.com/embed/neAzeAAq0hc",
+				"correct_answer": 1
+			},{
 				"difficulty": "Beginner",
 				"question": "which is the UK's second biggest city?",
 				"answers": [
@@ -205,8 +214,17 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "politics",
+			"topic": "Politics",
 			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "Liz Truss is the Prime Minister of the UK",
+				"answers": [
+					"True",
+					"False"
+				],
+				"video":"https://www.youtube.com/embed/kG6VxhweM8o",
+				"correct_answer": 2
+			},{
 				"difficulty": "Beginner",
 				"question": "Which US President give his name to the Teddy Bear?",
 				"answers": [
@@ -302,8 +320,17 @@ var questions = {
 				"correct_answer": 3
 			}]
 		},{
-			"topic": "conservation",
+			"topic": "Conservation",
 			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "The United States produces the most Carbon dioxide emissions",
+				"answers": [
+					"True",
+					"False"
+				],
+				"video":"https://www.youtube.com/embed/S1hJnUk_Mbc",
+				"correct_answer": 2
+			},{
 				"difficulty": "Beginner",
 				"question": "What is the fastest member of the animal kingdom?",
 				"answers": [
@@ -364,8 +391,17 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "celebrity",
+			"topic": "Celebrity",
 			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "Daniel Radcliffe is the current James Bond actor?",
+				"answers": [
+					"True",
+					"False"
+				],
+				"video":"https://www.youtube.com/embed/U9FzgsF2T-s",
+				"correct_answer": 2
+			},{
 				"difficulty": "Beginner",
 				"question": "Who did I dress up as for halloween?",
 				"answers": [
@@ -436,7 +472,7 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "law",
+			"topic": "Law",
 			"quizquestions": [{
 				"difficulty": "Beginner",
 				"question": "What is the age of criminal responsibility in England and Wales?",
@@ -499,8 +535,17 @@ var questions = {
 			}]
 		},
 		{
-			"topic": "sport",
+			"topic": "Sport",
 			"quizquestions": [{
+				"difficulty": "Beginner",
+				"question": "The World Cup is every 6 years",
+				"answers": [
+					"True",
+					"False"
+				],
+				"video":"https://www.youtube.com/embed/S2hqfICSY7o",
+				"correct_answer": 2
+			},{
 				"difficulty": "Beginner",
 				"question": "Which country won the first ever football world cup?",
 				"answers": [

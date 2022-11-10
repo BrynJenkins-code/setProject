@@ -23,6 +23,7 @@ var currentScore = 0;
 var selections = []; //Array containing user choices
 var quiz = $("#quiz"); //Quiz div object
 questions = loadQuestions(questions, selected_topic, difficulty);
+updateTopicMetrics(selected_topic, difficulty)
 
 // Display initial question
 displayNext();
@@ -217,20 +218,25 @@ function displayScore() {
   return score;
 }
 
-function updateTopicMetrics(topic) {
+function updateTopicMetrics(topic, difficulty) {
   jsonFile = localStorage.getItem("metrics");
   console.log(jsonFile);
-  var content;
+
   if (!jsonFile) {
     jsonFile = metrics;
   } else {
     jsonFile = JSON.parse(jsonFile);
   }
   console.log(jsonFile);
-
   var currentDate = new Date();
   let date = currentDate.toGMTString();
-  jsonFile.topics[topic].noOfClicks = +jsonFile.topics[topic].noOfClicks++;
+  jsonFile.topics[topic].noOfClicks++;
+  if (difficulty === "Beginner") {
+    jsonFile.topics[topic].beginnerClicks++;
+  } else {
+    jsonFile.topics[topic].expertClicks++;
+  }
+
   jsonFile.topics[topic].timesAccessed.push(date);
   console.log(jsonFile);
   localStorage.setItem("metrics", JSON.stringify(jsonFile))

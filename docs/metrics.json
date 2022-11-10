@@ -1,0 +1,51 @@
+var metrics = {
+    "topics": {
+        "history": {
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        },
+        "geography": {
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        },
+        "politics": {
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        },
+        "conservation": {
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        },
+        "celebrities": {
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        },
+        "law": {
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        },
+        "sport": {
+            "noOfClicks": 0,
+            "beginnerClicks": 0,
+            "expertClicks": 0,
+            "timesAccessed": []
+        }
+    },
+    "formats": {
+        "video": 0,
+        "multi-choice": 0,
+        "image": 0
+    }
+}
