@@ -610,12 +610,33 @@ var questions = {
 			"topic": "live",
 			"quizquestions": [{
 				"difficulty": "Beginner",
-				"question": "The World Cup is every 6 years",
+				"question": "Who has Vanellope as their slack profile picture?",
 				"answers": [
-					"True",
-					"False"
+					"Vishal",
+					"Becky",
+					"Dylan"
 				],
-				"video":"https://www.youtube.com/embed/S2hqfICSY7o",
+				"video":"https://www.youtube.com/embed/O5WBfOK5syA",
+				"correct_answer": 2
+			},{
+				"difficulty": "Beginner",
+				"question": "What is the team mascot called?",
+				"answers": [
+					"Pole Pole",
+					"Bryn Jenkins",
+					"Bunt"
+				],
+				"image":"polepole.png",
+				"altText":"Live team mascot",
+				"correct_answer": 1
+			},{
+				"difficulty": "Beginner",
+				"question": "How many members are in the live team confulence(not including mascots)?",
+				"answers": [
+					"21",
+					"24",
+					"26"
+				],
 				"correct_answer": 2
 			}]
 		}

@@ -194,6 +194,7 @@ function updateScore() {
 
 // Computes score and returns a paragraph element to be displayed
 function displayScore() {
+  returnLeaderboard();
   var numCorrect = 0;
   for (var i = 0; i < selections.length; i++) {
     if (selections[i] + 1 === questions[i].correct_answer) {
@@ -203,6 +204,7 @@ function displayScore() {
 
   var score = $("<p>", { id: "question" });
   var name = $("<input>", { type: "text", id: "name" });
+  var namelabel = $("<label for='name'>Input your name</label>");
   var name = document.createElement("input");
   name.type = "text";
   name.id = "name";
@@ -212,6 +214,8 @@ function displayScore() {
   submitName.addEventListener("click", () => {
     console.log(score);
     addLeaderboardEntry(name.value, numCorrect);
+    $(name).hide();
+    $(submitName).hide();
   });
 
   document.querySelector("#container").appendChild(name);
@@ -286,11 +290,45 @@ function addLeaderboardEntry(name, score) {
 
 function leaderboardSort(prop) {
   return function (a, b) {
-    if (a[prop] > b[prop]) {
+    if (a[prop] < b[prop]) {
       return 1;
-    } else if (a[prop] < b[prop]) {
+    } else if (a[prop] > b[prop]) {
       return -1;
     }
     return 0;
   };
+}
+
+function returnLeaderboard() {
+  jsonFile = localStorage.getItem(selected_topic + difficulty);
+  if (!jsonFile) {
+    return;
+  } else {
+    jsonFile = JSON.parse(jsonFile);
+  }
+
+  let col = ["name", "score"];
+
+  // Create table.
+  const table = document.createElement("table");
+
+  // Create table header row using the extracted headers above.
+  let tr = table.insertRow(-1); // table row.
+  for (let i = 0; i < col.length; i++) {
+    let th = document.createElement("th"); // table header.
+    th.innerHTML = col[i];
+    tr.appendChild(th);
+  }
+  console.log(jsonFile.entries);
+  // add json data to the table as rows.
+  for (let i = 0; i < jsonFile.entries.length; i++) {
+    tr = table.insertRow(-1);
+    for (let j = 0; j < col.length; j++) {
+      let tabCell = tr.insertCell(-1);
+      tabCell.innerHTML = jsonFile.entries[i][col[j]];
+    }
+  }
+
+  // Now, add the newly created table with json data, to a container.
+  document.querySelector("#container").appendChild(table);
 }
