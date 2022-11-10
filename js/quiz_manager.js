@@ -116,13 +116,27 @@ function createQuestionElement(index) {
 
 // Creates a list of the answer choices as radio inputs
 function createRadios(index) {
-  var radioList = $("<ul style='list-style-type: none; padding:0px;'>");
+  var radioList = $(
+    "<ul style='list-style-type: none; padding:0px;display:flex; flex-direction:column'>"
+  );
   var item;
   var input = "";
   for (var i = 0; i < questions[index].answers.length; i++) {
     item = $("<li>");
-    input = '<input type="radio" name="answer" value=' + i + " />";
-    input += questions[index].answers[i];
+    input =
+      '<input id="' +
+      "btn" +
+      i +
+      '"type="radio" name="answer" value=' +
+      i +
+      " />";
+    input +=
+      "<label for='" +
+      "btn" +
+      i +
+      "'>" +
+      questions[index].answers[i] +
+      "</label>";
     item.append(input);
     radioList.append(item);
   }
