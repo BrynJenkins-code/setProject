@@ -40,3 +40,16 @@ footer{
 .topic_label{
     background-color:#4CD9E1;
 }
+
+.question_videos{
+    height: calc(50vw/16*9);
+    width: 50vw;
+}
+
+.question_images {
+    width: auto;
+    height: auto;
+    max-width: 100;
+    max-height: 630px;
+    flex: 1;
+}
