@@ -261,3 +261,28 @@ function updateFormatMetrics(index) {
   localStorage.setItem("metrics", JSON.stringify(jsonFile))
 }
 
+function addLeaderboardEntry(name, score) {
+  jsonFile = localStorage.getItem("leaderboard");
+
+  if (!jsonFile) {
+    jsonFile = leaderboard;
+  } else {
+    jsonFile = JSON.parse(jsonFile);
+  }
+  jsonFile.leaderboard.entries.push({ name: name, score: score });
+  jsonFile.leaderboard.entries.sort(leaderboardSort("score"));
+  localStorage.setItem("leaderboard", JSON.stringify(jsonFile))
+
+}
+
+function leaderboardSort(prop) {
+  return function (a, b) {
+    if (a[prop] > b[prop]) {
+      return 1;
+    } else if (a[prop] < b[prop]) {
+      return -1;
+    }
+    return 0;
+  }
+}
+
