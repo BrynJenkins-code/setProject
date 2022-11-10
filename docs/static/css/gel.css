@@ -1086,6 +1086,7 @@ input[type=range]::-ms-thumb {
   vertical-align: middle;
   margin: 0;
   font-family: inherit;
+  box-shadow: 10px 10px 5px F6EEFF;
 }
 
 .gel-cta, .gel-cta a {
@@ -1095,6 +1096,10 @@ input[type=range]::-ms-thumb {
 .gel-button {
   background-color: #F6EEFF;
   color: #fff;
+  box-shadow: 3px 3px #b8b0c2d3;
+  margin: 5px;
+  border-width: 1px;
+  border-color: #9e9d9e ; 
 }
 
 .gel-cta {
@@ -1156,7 +1161,7 @@ input[type=range]::-ms-thumb {
 }
 
 .gel-button:hover {
-  background-color: #4CD9E1;
+  background-color: #c2bbca;
   border-color: #404040;
 }
 
