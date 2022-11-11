@@ -638,7 +638,16 @@ var questions = {
 					"26"
 				],
 				"correct_answer": 2
-			}]
+			},{
+				"difficulty": "Expert",
+				"question": "What date did the level 6 apprenices start?",
+				"answers": [
+					"19th September",
+					"24th August",
+					"20th Septemeber"
+				],
+				"correct_answer": 3
+			},]
 		}
 	]
 }
